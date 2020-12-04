@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  size: 1
+  fuel_present: false
+  fuel_constructed: false
+  image: MyText
+  system_id: 1
+
+two:
+  name: MyString
+  size: 1
+  fuel_present: false
+  fuel_constructed: false
+  image: MyText
+  system_id: 1

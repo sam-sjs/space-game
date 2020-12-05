@@ -1,2 +1,15 @@
-<h1>Users#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+<h2>Create New User:</h2>
+
+<% if @user.errors.full_messages.any? %>
+  <strong>Please correct the following errors:</strong>
+  <ul>
+    <% @user.errors.full_messages.each do |e| %>
+      <li>
+        <%= e %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+
+<%= render partial: 'form'  %>

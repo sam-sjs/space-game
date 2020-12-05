@@ -2,16 +2,16 @@ print "Creating Users..."
 
 User.destroy_all
 
-User.create!(
+sam = User.create!(
   name: 'Sam',
   email: 'sam@sam.com',
-  password_digest: 'chicken'
+  password: 'chicken'
 )
 
-User.create!(
+sean = User.create!(
   name: 'Sean',
   email: 'sean@sean.com',
-  password_digest: 'chicken'
+  password: 'chicken'
 )
 
 puts "created #{User.count} users."
@@ -21,9 +21,10 @@ print "Creating Systems..."
 
 System.destroy_all
 
-System.create!(
+sys1 = System.create!(
   name: 'Alpha',
-  planets: 4
+  image: 'http://placekitten.com/500/500',
+  user_id: sam.id
 )
 
 puts "created #{System.count} users."
@@ -38,7 +39,8 @@ Planet.create!(
   size: 3,
   fuel_present: true,
   fuel_constructed: false,
-  image: 'http://placekitten.com/300/300'
+  image: 'http://placekitten.com/300/300',
+  system_id: sys1.id
 )
 
 Planet.create!(
@@ -46,7 +48,8 @@ Planet.create!(
   size: 2,
   fuel_present: false,
   fuel_constructed: true,
-  image: 'http://placekitten.com/200/200'
+  image: 'http://placekitten.com/200/200',
+  system_id: sys1.id
 )
 
 Planet.create!(
@@ -54,7 +57,8 @@ Planet.create!(
   size: 1,
   fuel_present: false,
   fuel_constructed: false,
-  image: 'http://placekitten.com/100/100'
+  image: 'http://placekitten.com/100/100',
+  system_id: sys1.id
 )
 
 Planet.create!(
@@ -62,7 +66,8 @@ Planet.create!(
   size: 2,
   fuel_present: false,
   fuel_constructed: false,
-  image: 'http://placekitten.com/200/200'
+  image: 'http://placekitten.com/200/200',
+  system_id: sys1.id
 )
 
 puts "created #{Planet.count} planets."
@@ -74,7 +79,8 @@ Ship.destroy_all
 
 Ship.create!(
   name: 'MyShip!',
-  fuel: 10
+  fuel: 10,
+  user_id: sam.id
 )
 
 puts "created #{Ship.count} ships."

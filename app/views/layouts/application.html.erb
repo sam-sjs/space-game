@@ -13,15 +13,16 @@
     <header>
       <nav>
         <h1>SPACE GAME!</h1>
-        <br>
-        <% if @current_user.present? %>
-          Welcome, <%= @current_user.name %>
-          <%= link_to 'Logout', login_path, method: 'delete' %>
-        <% else %>
-          <%= link_to 'Login', login_path %>
-          |
-          <%= link_to 'Signup', new_user_path %>
-        <% end %>
+        <div>
+          <% if @current_user.present? %>
+            Welcome, <%= @current_user.name %>
+            <%= link_to 'Logout', login_path, method: 'delete' %>
+          <% else %>
+            <%= link_to 'Login', login_path %>
+            |
+            <%= link_to 'Signup', new_user_path %>
+          <% end %>
+        </div>
       </nav>
     </header>
     <%= yield %>

@@ -1,2 +1,40 @@
-<h1>Systems#show</h1>
-<p>Find me in app/views/systems/show.html.erb</p>
+    <div id="page_container">
+      <div id="ship_container">
+        <a href="" class="nav_links" id="top_nav">
+          <div>^</div>
+        </a>
+        <a href="" class="nav_links" id="right_nav">
+          <div>></div>
+        </a>
+        <a href="" class="nav_links" id="bottom_nav">
+          <div>v</div>
+        </a>
+        <a href="" class="nav_links" id="left_nav">
+          <div><</div>
+        </a>
+      </div>
+      <div class="planets" id="planet1">
+        <%= image_tag @current_system.planets[0].image %><br>
+        <%= @current_system.planets[0].name %><br>
+        Planet size: <%= @current_system.planets[0].size %><br>
+        Fuel Status: <%= @current_system.planets[0].fuel_status %><br>
+      </div>
+      <div class="planets" id="planet2">
+        <%= image_tag @current_system.planets[1].image %><br>
+        <%= @current_system.planets[1].name %><br>
+        Planet size: <%= @current_system.planets[1].size %><br>
+        Fuel Status: <%= @current_system.planets[1].fuel_status %><br>
+      </div>
+      <div class="planets" id="planet3">
+        <%= image_tag @current_system.planets[2].image %><br>
+        <%= @current_system.planets[2].name %><br>
+        Planet size: <%= @current_system.planets[2].size %><br>
+        Fuel Status: <%= @current_system.planets[2].fuel_status %><br>
+      </div>
+      <div class="planets" id="planet4">
+        <%= image_tag @current_system.planets[3].image %><br>
+        <%= @current_system.planets[3].name %><br>
+        Planet size: <%= @current_system.planets[3].size %><br>
+        Fuel Status: <%= @current_system.planets[3].fuel_status %><br>
+      </div>
+    </div>

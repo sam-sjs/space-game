@@ -46,7 +46,7 @@ Planet.create!(
 Planet.create!(
   name: "Planet 2",
   size: 2,
-  fuel_present: false,
+  fuel_present: true,
   fuel_constructed: true,
   image: 'http://placekitten.com/200/200',
   system_id: sys1.id

@@ -9,6 +9,7 @@ class SystemsController < ApplicationController
   end
 
   def show
+    @current_system = System.find params[:id]
   end
 
   def edit

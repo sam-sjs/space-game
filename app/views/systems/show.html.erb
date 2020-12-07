@@ -1,18 +1,9 @@
     <div id="page_container">
       <div id="ship_container">
-        <%= link_to '^', system_path, id: 'top_nav', class: 'nav_links', method: 'patch' %>
-        <!-- <a href="" class="nav_links" id="top_nav">
-          <div>^</div>
-        </a> -->
-        <a href="" class="nav_links" id="right_nav">
-          <div>></div>
-        </a>
-        <a href="" class="nav_links" id="bottom_nav">
-          <div>v</div>
-        </a>
-        <a href="" class="nav_links" id="left_nav">
-          <div><</div>
-        </a>
+        <%= link_to '^', systems_path, id: 'top_nav', class: 'nav_links', method: 'post' %>
+        <%= link_to '>', systems_path, id: 'right_nav', class: 'nav_links', method: 'post' %>
+        <%= link_to 'v', systems_path, id: 'bottom_nav', class: 'nav_links', method: 'post' %>
+        <%= link_to '<', systems_path, id: 'left_nav', class: 'nav_links', method: 'post' %>
       </div>
       <div id="system"><h2><%= @current_system.name %></h2></div>
       <div class="planets" id="planet1">

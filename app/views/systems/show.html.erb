@@ -1,9 +1,11 @@
     <div id="page_container">
       <div id="ship_container">
-        <%= link_to '^', systems_path, id: 'top_nav', class: 'nav_links', method: 'post' %>
-        <%= link_to '>', systems_path, id: 'right_nav', class: 'nav_links', method: 'post' %>
-        <%= link_to 'v', systems_path, id: 'bottom_nav', class: 'nav_links', method: 'post' %>
-        <%= link_to '<', systems_path, id: 'left_nav', class: 'nav_links', method: 'post' %>
+        <%= link_to '', systems_path, id: 'top_nav', class: 'nav_links', method: 'post' %>
+        <%= link_to '', systems_path, id: 'right_nav', class: 'nav_links', method: 'post' %>
+        <%= link_to '', systems_path, id: 'bottom_nav', class: 'nav_links', method: 'post' %>
+        <%= link_to '', systems_path, id: 'left_nav', class: 'nav_links', method: 'post' %>
+        <%= image_tag "nav-dial.png", id: 'nav_dial' %>
+        <%= image_tag "ship.png", id: 'ship' %>
       </div>
       <div id="system"><h2><%= @current_system.name %></h2></div>
       <div class="planets" id="planet1">

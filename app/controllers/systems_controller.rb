@@ -26,10 +26,4 @@ class SystemsController < ApplicationController
 
   def destroy
   end
-
-  # private
-  #
-  # def system_params
-  #   params.require(:system).permit(:name, :image, :user_id)
-  # end
 end

@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Mono&display=swap');
 
 * {
-  border: 1px solid red;
+  /* border: 1px solid red; */
   box-sizing: border-box;
 }
 
@@ -77,6 +77,21 @@ h1 {
   position:absolute;
   display: block;
   text-align: center;
+}
+
+#nav_dial {
+  position: relative;
+  right: 52px;
+  bottom: 52px;
+  z-index: -1;
+}
+
+#ship {
+  position: absolute;
+  top: 0px;
+  left: 5px;
+  height: 140px;
+  width: 140px;
 }
 
 .planets {

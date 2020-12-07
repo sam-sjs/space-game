@@ -3,6 +3,10 @@ class SystemsController < ApplicationController
   end
 
   def create
+    system = System.new system_params
+    system.name = system.gen_name
+    system.save
+    redirect_to system_path(system.id)
   end
 
   def index
@@ -19,5 +23,11 @@ class SystemsController < ApplicationController
   end
 
   def destroy
+  end
+
+  private
+
+  def system_params
+    params.requre(:system).permit(:name, :image, :user_id)
   end
 end

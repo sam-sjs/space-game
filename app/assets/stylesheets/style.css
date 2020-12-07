@@ -111,3 +111,15 @@ h1 {
   max-height: 300px;
   max-width: 300px;
 }
+
+#system {
+  position: absolute;
+  width: 20%;
+  height: 50px;
+  text-align: center;
+  left: 40%;
+}
+
+#system h2 {
+  margin: 0;
+}

@@ -1,8 +1,9 @@
     <div id="page_container">
       <div id="ship_container">
-        <a href="" class="nav_links" id="top_nav">
+        <%= link_to '^', system_path, id: 'top_nav', class: 'nav_links', method: 'patch' %>
+        <!-- <a href="" class="nav_links" id="top_nav">
           <div>^</div>
-        </a>
+        </a> -->
         <a href="" class="nav_links" id="right_nav">
           <div>></div>
         </a>
@@ -13,6 +14,7 @@
           <div><</div>
         </a>
       </div>
+      <div id="system"><h2><%= @current_system.name %></h2></div>
       <div class="planets" id="planet1">
         <%= image_tag @current_system.planets[0].image %><br>
         <%= @current_system.planets[0].name %><br>

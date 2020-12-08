@@ -21,11 +21,11 @@ class Planet < ApplicationRecord
   end
 
   def self.planet_setup(sys_id, sys_name)
-    # if System.find(sys_id).planets.present? == false
+    if System.find(sys_id).planets.present? == false
       orbitals = 4  #Change to rand(1..4)
       orbitals.times do |i|
         Planet.create name: sys_name + "-" + ('a'..'d').to_a[i], system_id: sys_id
-      # end
+      end
     end
   end
 

@@ -3,8 +3,12 @@ class SystemsController < ApplicationController
   end
 
   def create
-    if System.check_system(params[:prev_loc], params[:sys_id])
-      redirect_to system_path(System.check_system(params[:prev_loc], params[:sys_id])) and return
+    next_sys = System.check_system(params[:prev_loc], params[:sys_id])
+    if next_sys
+      arrival = System.find(next_sys)
+      arrival.send(params[:prev_loc]+"=", params[:sys_id])
+      arrival.save
+      redirect_to system_path(next_sys) and return
     else
       valid_directions = ["sys_below_id", "sys_above_id", "sys_left_id", "sys_right_id"]
       redirect_to root_path and return unless valid_directions.include? params[:prev_loc]

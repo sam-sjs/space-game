@@ -1,9 +1,9 @@
     <div id="page_container">
       <div id="ship_container">
-        <%= link_to '', systems_path, id: 'top_nav', class: 'nav_links', method: 'post' %>
-        <%= link_to '', systems_path, id: 'right_nav', class: 'nav_links', method: 'post' %>
-        <%= link_to '', systems_path, id: 'bottom_nav', class: 'nav_links', method: 'post' %>
-        <%= link_to '', systems_path, id: 'left_nav', class: 'nav_links', method: 'post' %>
+        <%= link_to '', systems_path(prev_loc: "sys_below_id", sys_id: @current_system.id), id: 'top_nav', class: 'nav_links', method: 'post' %>
+        <%= link_to '', systems_path(prev_loc: "sys_left_id", sys_id: @current_system.id), id: 'right_nav', class: 'nav_links', method: 'post' %>
+        <%= link_to '', systems_path(prev_loc: "sys_above_id", sys_id: @current_system.id), id: 'bottom_nav', class: 'nav_links', method: 'post' %>
+        <%= link_to '', systems_path(prev_loc: "sys_right_id", sys_id: @current_system.id), id: 'left_nav', class: 'nav_links', method: 'post' %>
         <%= image_tag "nav-dial.png", id: 'nav_dial' %>
         <%= image_tag "ship.png", id: 'ship' %>
       </div>

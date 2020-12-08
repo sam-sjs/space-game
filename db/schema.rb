@@ -38,6 +38,10 @@ ActiveRecord::Schema.define(version: 2020_12_05_055410) do
     t.string "name"
     t.text "image"
     t.integer "user_id"
+    t.integer "sys_below_id"
+    t.integer "sys_above_id"
+    t.integer "sys_left_id"
+    t.integer "sys_right_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

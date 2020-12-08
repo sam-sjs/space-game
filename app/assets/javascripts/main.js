@@ -2,7 +2,11 @@
 $(document).ready(function() {
   console.log("jQuery running!");
 
-  for (let i = 0; i < 100; i++) {
-    const star = '<div class="star" style="animation: twinkle ' + ((Math.random() * 5) + 5)+'s linear ' + ((Math.random() * 5) + 5) + 's infinite; top: ' + Math.random() * $(window).height() + 'px; left: ' + Math.random() * $(window).width() + 'px;"></div>'; $('body').append(star);
+
+  //Makes for twinkly stars...tried to format the code nicer but what the hell...
+  for (let i = 0; i < 250; i++) {
+    const star =
+    '<div class="star" style="animation: twinkle ' + ((Math.random() * 2) + 2)+'s linear ' + ((Math.random() * 1)) + 's infinite; top: ' + Math.random() * $(window).height() + 'px; left: ' + Math.random() * $(window).width() + 'px;"></div>';
+    $('#page_container').append(star);
   }
 })

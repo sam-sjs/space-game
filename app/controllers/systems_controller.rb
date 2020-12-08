@@ -7,11 +7,12 @@ class SystemsController < ApplicationController
     redirect_to root_path and return unless valid_directions.include? params[:prev_loc]
 
     system = System.create user_id: @current_user.id
+    Planet.planet_setup(system.id, system.name)
     #Model
-    orbitals = 4  #Change to rand(1..4)
-    orbitals.times do |i|
-      Planet.create name: system.name + "-" + ('a'..'d').to_a[i], system_id: system.id
-    end
+    # orbitals = 4  #Change to rand(1..4)
+    # orbitals.times do |i|
+    #   Planet.create name: system.name + "-" + ('a'..'d').to_a[i], system_id: system.id
+    # end
     #Send the previous location (i.e. above, below, left, right) as a 'setter' and make equal to previous systems id
     system.send(params[:prev_loc]+"=", params[:sys_id])
     system.save

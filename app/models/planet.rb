@@ -20,6 +20,12 @@ class Planet < ApplicationRecord
     end
   end
 
+  def self.planet_setup(sys_id, sys_name)
+    orbitals = 4  #Change to rand(1..4)
+    orbitals.times do |i|
+      Planet.create name: sys_name + "-" + ('a'..'d').to_a[i], system_id: sys_id
+    end
+  end
 
   def fuel_status
     if fuel_present && fuel_constructed

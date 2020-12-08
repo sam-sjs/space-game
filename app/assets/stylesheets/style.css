@@ -152,8 +152,8 @@ hr {
 
 .star {
   position: absolute;
-  width: 2px;
-  height: 2px;
+  width: 3px;
+  height: 3px;
   background: rgba(255, 255, 255, 0.0);
   border-radius: 5px;
 }
@@ -161,21 +161,21 @@ hr {
 @keyframes twinkle {
   0% {
     transform: scale(1, 1);
-    background: rgba(255, 255, 255, 0.0);
+    background-color: rgba(255, 255, 255, 0.0);
     amimation-timing-function: ease-in;
   }
   60% {
     transform: scale(0.8, 0.8);
-    background: rgba(255, 255, 255, 1);
+    background-color: rgba(255, 255, 255, 1);
     amimation-timing-function: ease-out;
   }
   80% {
-    background: rgba(255,255,255,0.00);
+    background-color: rgba(255,255,255,0.00);
     transform: scale(1, 1);
   }
   100% {
     100% {
-    background: rgba(255,255,255,0.0);
+    background-color: rgba(255,255,255,0.0);
     transform: scale(1, 1);
   }
 }

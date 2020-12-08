@@ -83,6 +83,32 @@ hr {
   text-align: center;
 }
 
+.direction_guides {
+  position: absolute;
+  text-align: center;
+  width: 150px;
+}
+
+#top_guide {
+  top: -80px;
+}
+
+#right_guide {
+  right: -142px;
+  top: 62px;
+  transform: rotate(90deg);
+}
+
+#bottom_guide {
+  bottom: -80px;
+}
+
+#left_guide {
+  left: -142px;
+  top: 62px;
+  transform: rotate(-90deg);
+}
+
 #nav_dial {
   position: relative;
   right: 52px;

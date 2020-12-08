@@ -1,9 +1,13 @@
     <div id="page_container">
       <div id="ship_container">
         <%= link_to '', systems_path(prev_loc: "sys_below_id", sys_id: @current_system.id), id: 'top_nav', class: 'nav_links', method: 'post' %>
+        <div id="top_guide" class="direction_guides">TESTESTESTEST</div>
         <%= link_to '', systems_path(prev_loc: "sys_left_id", sys_id: @current_system.id), id: 'right_nav', class: 'nav_links', method: 'post' %>
+        <div id="right_guide" class="direction_guides">TESTESTESTEST</div>
         <%= link_to '', systems_path(prev_loc: "sys_above_id", sys_id: @current_system.id), id: 'bottom_nav', class: 'nav_links', method: 'post' %>
+        <div id="bottom_guide" class="direction_guides">TESTESTESTEST</div>
         <%= link_to '', systems_path(prev_loc: "sys_right_id", sys_id: @current_system.id), id: 'left_nav', class: 'nav_links', method: 'post' %>
+        <div id="left_guide" class="direction_guides">TESTESTESTEST</div>
         <%= image_tag "nav-dial.png", id: 'nav_dial' %>
         <%= image_tag "ship.png", id: 'ship' %>
       </div>
@@ -15,21 +19,27 @@
         Fuel Status: <%= @current_system.planets[0].fuel_status %><br>
       </div>
       <div class="planets" id="planet2">
+        <% if !@current_system.planets[1].nil? %>
         <%= image_tag @current_system.planets[1].image %><br>
         <%= @current_system.planets[1].name %><br>
         Planet size: <%= @current_system.planets[1].size %><br>
         Fuel Status: <%= @current_system.planets[1].fuel_status %><br>
+        <% end %>
       </div>
       <div class="planets" id="planet3">
+        <% if !@current_system.planets[2].nil? %>
         <%= image_tag @current_system.planets[2].image %><br>
         <%= @current_system.planets[2].name %><br>
         Planet size: <%= @current_system.planets[2].size %><br>
         Fuel Status: <%= @current_system.planets[2].fuel_status %><br>
+        <% end %>
       </div>
       <div class="planets" id="planet4">
+        <% if !@current_system.planets[3].nil? %>
         <%= image_tag @current_system.planets[3].image %><br>
         <%= @current_system.planets[3].name %><br>
         Planet size: <%= @current_system.planets[3].size %><br>
         Fuel Status: <%= @current_system.planets[3].fuel_status %><br>
+        <% end %>
       </div>
     </div>

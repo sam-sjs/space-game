@@ -61,21 +61,23 @@ $(document).ready(function() {
 
   setupSystem();
 
-  $('#planet1 .mine').on('click', function() {
-    $('#fuel1').html('Helium-3 is being mined...').css('color', '#77DD77');
-    $('#planet1 .mine').hide();
-  });
-  $('#planet2 .mine').on('click', function() {
-    $('#fuel2').html('Helium-3 is being mined...').css('color', '#77DD77');
-    $('#planet2 .mine').hide();
-  });
-  $('#planet3 .mine').on('click', function() {
-    $('#fuel3').html('Helium-3 is being mined...').css('color', '#77DD77');
-    $('#planet3 .mine').hide();
-  });
-  $('#planet4 .mine').on('click', function() {
-    $('#fuel4').html('Helium-3 is being mined...').css('color', '#77DD77');
-    $('#planet4 .mine').hide();
-  });
+  // $('.mine').on('click', function() {
+  //   // $('#fuel1').html('Helium-3 is being mined...').css('color', '#77DD77');
+  //   // $('#planet1 .mine').hide();
+  //   // location.reload(true);
+  //   console.log('Clicked!')
+  // });
+  // $('#planet2 .mine').on('click', function() {
+  //   $('#fuel2').html('Helium-3 is being mined...').css('color', '#77DD77');
+  //   $('#planet2 .mine').hide();
+  // });
+  // $('#planet3 .mine').on('click', function() {
+  //   $('#fuel3').html('Helium-3 is being mined...').css('color', '#77DD77');
+  //   $('#planet3 .mine').hide();
+  // });
+  // $('#planet4 .mine').on('click', function() {
+  //   $('#fuel4').html('Helium-3 is being mined...').css('color', '#77DD77');
+  //   $('#planet4 .mine').hide();
+  // });
 
 })

@@ -245,6 +245,18 @@ hr {
   padding: 4px;
 }
 
+#messaging {
+  border: 1px solid red;
+  position: absolute;
+  top: 200px;
+  left: 40%;
+  width: 20%;
+  text-align: center;
+  border: 3px solid rgb(68, 135, 175);
+  background-color: rgba(255, 255, 255, 0.25);
+  border-radius: 15px;
+}
+
 .star {
   position: absolute;
   width: 3px;

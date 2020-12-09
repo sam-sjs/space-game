@@ -17,8 +17,10 @@ class PlanetsController < ApplicationController
   def update
     planet = Planet.find params[:id]
     case params[:type]
-    when 'mine' then planet.build_mine
+    when 'mine' then flash[:notice] = planet.build_mine
+    when 'investigate' then planet.investigate_poi
     end
+    redirect_to system_path(planet.system.id)
   end
 
   def destroy

@@ -1,5 +1,7 @@
     <div id="page_container">
       <div id="ship_container">
+        <!-- Navigation Links -->
+        <!-- Navigate Up -->
         <%= link_to '', systems_path(prev_loc: "sys_below_id", sys_id: @current_system.id), id: 'top_nav', class: 'nav_links', method: 'post' %>
         <div id="top_guide" class="direction_guides">
           <% if @current_system.sys_above_id != nil %>
@@ -8,6 +10,7 @@
             <%= '???' %>
           <% end %>
         </div>
+        <!-- Navigate Right -->
         <%= link_to '', systems_path(prev_loc: "sys_left_id", sys_id: @current_system.id), id: 'right_nav', class: 'nav_links', method: 'post' %>
         <div id="right_guide" class="direction_guides">
           <% if @current_system.sys_right_id != nil %>
@@ -16,6 +19,7 @@
             <%= '???' %>
           <% end %>
         </div>
+        <!-- Navigate Down -->
         <%= link_to '', systems_path(prev_loc: "sys_above_id", sys_id: @current_system.id), id: 'bottom_nav', class: 'nav_links', method: 'post' %>
         <div id="bottom_guide" class="direction_guides">
           <% if @current_system.sys_below_id != nil %>
@@ -24,6 +28,7 @@
             <%= '???' %>
           <% end %>
         </div>
+        <!-- Navigate Left -->
         <%= link_to '', systems_path(prev_loc: "sys_right_id", sys_id: @current_system.id), id: 'left_nav', class: 'nav_links', method: 'post' %>
         <div id="left_guide" class="direction_guides">
           <% if @current_system.sys_left_id != nil %>
@@ -32,23 +37,33 @@
             <%= '???' %>
           <% end %>
         </div>
+        <!-- Central Console Images -->
         <%= image_tag "nav-dial.png", id: 'nav_dial' %>
         <%= image_tag "ship.png", id: 'ship' %>
+        <!-- Ship Resources -->
         <div id="outer_resources">
           <div id="resources">
-            <div id="currency"><span id="symbol">&#8353;</span></div>
-            <div id="he3"><sup>3</sup>He:</div>
+            <div id="currency"><%= number_with_delimiter(@current_user.currency, :delimiter => ',') %><span id="symbol">&#8353;</span></div>
+            <div id="he3"><sup>3</sup>He: <%= @current_user.fuel %></div>
           </div>
         </div>
-      </div>
+      </div> <!-- End #ship_container -->
+      <!-- System Objects -->
       <div id="system"><h2><%= @current_system.name %></h2></div>
+      <!-- Planet One -->
       <div class="planets" id="planet1">
         <div class="image_container"><%= image_tag @current_system.planets[0].image %><br></div>
         <%= @current_system.planets[0].name %><br>
         Planet size: <%= @current_system.planets[0].size %><br>
         Fuel Status: <strong><span id="fuel1"><%= @current_system.planets[0].fuel_status %></span></strong><br>
         Sensors: <strong><span id="sensor1"><%= @current_system.planets[0].sensor_status %></span></strong><br>
+        <div class="button_container">
+          <%= button_to "Build Mine", planet_path(@current_system.planets[0].id, type: "mine"), method: "patch", class: "buttons mine" %>
+          <input type="button" value="Investigate POI" class="buttons investigate">
+          <input type="button" value="Collect Fuel" class="buttons collect">
+        </div>
       </div>
+      <!-- Planet Two -->
       <div class="planets" id="planet2">
         <% if !@current_system.planets[1].nil? %>
           <div class="image_container"><%= image_tag @current_system.planets[1].image %><br></div>
@@ -56,8 +71,14 @@
           Planet size: <%= @current_system.planets[1].size %><br>
           Fuel Status: <strong><span id="fuel2"><%= @current_system.planets[1].fuel_status %></span></strong><br>
           Sensors: <strong><span id="sensor2"><%= @current_system.planets[1].sensor_status %></span></strong><br>
+          <div class="button_container">
+            <%= button_to "Build Mine", planet_path(@current_system.planets[1].id, type: "mine"), method: "patch", class: "buttons mine" %>
+            <input type="button" value="Investigate POI" class="buttons investigate">
+            <input type="button" value="Collect Fuel" class="buttons collect">
+          </div>
         <% end %>
       </div>
+      <!-- Planet Three -->
       <div class="planets" id="planet3">
         <% if !@current_system.planets[2].nil? %>
           <div class="image_container"><%= image_tag @current_system.planets[2].image %><br></div>
@@ -65,8 +86,14 @@
           Planet size: <%= @current_system.planets[2].size %><br>
           Fuel Status: <strong><span id="fuel3"><%= @current_system.planets[2].fuel_status %></span></strong><br>
           Sensors: <strong><span id="sensor3"><%= @current_system.planets[2].sensor_status %></span></strong><br>
+          <div class="button_container">
+            <%= button_to "Build Mine", planet_path(@current_system.planets[2].id, type: "mine"), method: "patch", class: "buttons mine" %>
+            <input type="button" value="Investigate POI" class="buttons investigate">
+            <input type="button" value="Collect Fuel" class="buttons collect">
+          </div>
         <% end %>
       </div>
+      <!-- Planet Four -->
       <div class="planets" id="planet4">
         <% if !@current_system.planets[3].nil? %>
           <div class="image_container"><%= image_tag @current_system.planets[3].image %><br></div>
@@ -74,6 +101,11 @@
           Planet size: <%= @current_system.planets[3].size %><br>
           Fuel Status: <strong><span id="fuel4"><%= @current_system.planets[3].fuel_status %></span></strong><br>
           Sensors: <strong><span id="sensor4"><%= @current_system.planets[3].sensor_status %></span></strong><br>
+          <div class="button_container">
+            <%= button_to "Build Mine", planet_path(@current_system.planets[3].id, type: "mine"), method: "patch", class: "buttons mine" %>
+            <input type="button" value="Investigate POI" class="buttons investigate">
+            <input type="button" value="Collect Fuel" class="buttons collect">
+          </div>
         <% end %>
       </div>
-    </div>
+    </div> <!-- End #page_container -->

@@ -5,13 +5,13 @@ $(document).ready(function() {
   const setupSystem = function() {
     for(let i = 1; i < 5; i++) {
       showPlanets(`#planet${i}`);
-      highlightFuel(`#fuel${i}`);
+      highlightFuel(`#fuel${i}`, `#planet${i}`);
       highlightSensors(`#sensor${i}`);
     };
     twinkleTwinkle();
   };
 
-  const highlightFuel = function(fuelId) {
+  const highlightFuel = function(fuelId, planetId) {
     const fuel = $(fuelId).html();
     switch(fuel) {
       case 'Helium-3 is being mined...':
@@ -19,6 +19,7 @@ $(document).ready(function() {
         break;
       case 'Helium-3 Available':
         $(fuelId).css('color', '#779ECB');
+        $(`${planetId} .mine`).show();
         break;
       case 'No Helium-3 deposits found':
         $(fuelId).css('color', '#FE6B64');
@@ -59,5 +60,22 @@ $(document).ready(function() {
   }
 
   setupSystem();
+
+  $('#planet1 .mine').on('click', function() {
+    $('#fuel1').html('Helium-3 is being mined...').css('color', '#77DD77');
+    $('#planet1 .mine').hide();
+  });
+  $('#planet2 .mine').on('click', function() {
+    $('#fuel2').html('Helium-3 is being mined...').css('color', '#77DD77');
+    $('#planet2 .mine').hide();
+  });
+  $('#planet3 .mine').on('click', function() {
+    $('#fuel3').html('Helium-3 is being mined...').css('color', '#77DD77');
+    $('#planet3 .mine').hide();
+  });
+  $('#planet4 .mine').on('click', function() {
+    $('#fuel4').html('Helium-3 is being mined...').css('color', '#77DD77');
+    $('#planet4 .mine').hide();
+  });
 
 })

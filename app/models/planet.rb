@@ -62,4 +62,9 @@ class Planet < ApplicationRecord
     end
   end
 
+  def build_mine
+    self.fuel_constructed = true
+    self.save
+  end
+
 end

@@ -4,6 +4,8 @@ class SystemsController < ApplicationController
 
   def create
     next_sys = System.check_system(params[:prev_loc], params[:sys_id])
+    @current_user.fuel -= 1
+    @current_user.save
     if next_sys
       arrival = System.find(next_sys)
       arrival.send(params[:prev_loc]+"=", params[:sys_id])

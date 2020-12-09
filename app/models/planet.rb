@@ -22,7 +22,13 @@ class Planet < ApplicationRecord
 
   def self.planet_setup(sys_id, sys_name)
     if System.find(sys_id).planets.present? == false
-      orbitals = rand(1..4)  #Change to rand(1..4)
+      chance = rand(1..100)
+      orbitals = case
+      when chance < 16 then 1
+      when chance >= 16 && chance < 51 then 2
+      when chance >= 51 && chance < 86 then 3
+      when chance >= 86 then 4
+      end
       orbitals.times do |i|
         Planet.create name: sys_name + "-" + ('a'..'d').to_a[i], system_id: sys_id
       end
@@ -31,9 +37,11 @@ class Planet < ApplicationRecord
 
   def fuel_status
     if fuel_present && fuel_constructed
-      'Fuel is being mined...'
+      'Helium-3 is being mined...'
     elsif fuel_present
-      'Fuel Available'
+      'Helium-3 Available'
+    else
+      'No Helium-3 deposits found'
     end
   end
 end

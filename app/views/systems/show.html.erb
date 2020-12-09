@@ -40,14 +40,14 @@
         <%= image_tag @current_system.planets[0].image %><br>
         <%= @current_system.planets[0].name %><br>
         Planet size: <%= @current_system.planets[0].size %><br>
-        Fuel Status: <%= @current_system.planets[0].fuel_status %><br>
+        Fuel Status: <strong><span id="fuel1"><%= @current_system.planets[0].fuel_status %></span></strong><br>
       </div>
       <div class="planets" id="planet2">
         <% if !@current_system.planets[1].nil? %>
           <%= image_tag @current_system.planets[1].image %><br>
           <%= @current_system.planets[1].name %><br>
           Planet size: <%= @current_system.planets[1].size %><br>
-          Fuel Status: <%= @current_system.planets[1].fuel_status %><br>
+          Fuel Status: <strong><span id="fuel2"><%= @current_system.planets[1].fuel_status %></span></strong><br>
         <% end %>
       </div>
       <div class="planets" id="planet3">
@@ -55,7 +55,7 @@
           <%= image_tag @current_system.planets[2].image %><br>
           <%= @current_system.planets[2].name %><br>
           Planet size: <%= @current_system.planets[2].size %><br>
-          Fuel Status: <%= @current_system.planets[2].fuel_status %><br>
+          Fuel Status: <strong><span id="fuel3"><%= @current_system.planets[2].fuel_status %></span></strong><br>
         <% end %>
       </div>
       <div class="planets" id="planet4">
@@ -63,7 +63,7 @@
           <%= image_tag @current_system.planets[3].image %><br>
           <%= @current_system.planets[3].name %><br>
           Planet size: <%= @current_system.planets[3].size %><br>
-          Fuel Status: <%= @current_system.planets[3].fuel_status %><br>
+          Fuel Status: <strong><span id="fuel4"><%= @current_system.planets[3].fuel_status %></span></strong><br>
         <% end %>
       </div>
     </div>

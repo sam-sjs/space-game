@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Mono&display=swap');
 
 * {
-  /* border: 1px solid red; */
+  border: 1px solid red;
   box-sizing: border-box;
 }
 
@@ -124,12 +124,28 @@ hr {
   width: 140px;
 }
 
+#resources {
+  border: 1px solid red;
+  display: flex;
+  justify-content: space-between;
+  width: 150px;
+  bottom: -100px;
+}
+
+#he3 {
+
+}
+
+#currency {
+
+}
+
 .planets {
   position: absolute;
   width: 30%;
   height: 40%;
   max-width: 450px;
-  padding: 5px;
+  padding: 10px;
   border: 3px solid rgb(68, 135, 175);
   border-radius: 25px;
   background-color: rgba(255,255,255,0.25)
@@ -155,9 +171,15 @@ hr {
   left: 20px;
 }
 
+.image_container {
+  width: 250px;
+  height: 250px;
+  margin-bottom: 15px;
+}
+
 .planets img {
-  max-height: 300px;
-  max-width: 300px;
+  max-height: 250px;
+  max-width: 250px;
 }
 
 #system {

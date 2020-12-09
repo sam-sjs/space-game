@@ -34,36 +34,44 @@
         </div>
         <%= image_tag "nav-dial.png", id: 'nav_dial' %>
         <%= image_tag "ship.png", id: 'ship' %>
+        <div id="resources">
+          <div id="currency">&#8353;</div>
+          <div id="he3"><sup>3</sup>He</div>
+        </div>
       </div>
       <div id="system"><h2><%= @current_system.name %></h2></div>
       <div class="planets" id="planet1">
-        <%= image_tag @current_system.planets[0].image %><br>
+        <div class="image_container"><%= image_tag @current_system.planets[0].image %><br></div>
         <%= @current_system.planets[0].name %><br>
         Planet size: <%= @current_system.planets[0].size %><br>
         Fuel Status: <strong><span id="fuel1"><%= @current_system.planets[0].fuel_status %></span></strong><br>
+        Sensors: <strong><span id="sensor1"><%= @current_system.planets[0].sensor_status %></span></strong><br>
       </div>
       <div class="planets" id="planet2">
         <% if !@current_system.planets[1].nil? %>
-          <%= image_tag @current_system.planets[1].image %><br>
+          <div class="image_container"><%= image_tag @current_system.planets[1].image %><br></div>
           <%= @current_system.planets[1].name %><br>
           Planet size: <%= @current_system.planets[1].size %><br>
           Fuel Status: <strong><span id="fuel2"><%= @current_system.planets[1].fuel_status %></span></strong><br>
+          Sensors: <strong><span id="sensor2"><%= @current_system.planets[1].sensor_status %></span></strong><br>
         <% end %>
       </div>
       <div class="planets" id="planet3">
         <% if !@current_system.planets[2].nil? %>
-          <%= image_tag @current_system.planets[2].image %><br>
+          <div class="image_container"><%= image_tag @current_system.planets[2].image %><br></div>
           <%= @current_system.planets[2].name %><br>
           Planet size: <%= @current_system.planets[2].size %><br>
           Fuel Status: <strong><span id="fuel3"><%= @current_system.planets[2].fuel_status %></span></strong><br>
+          Sensors: <strong><span id="sensor3"><%= @current_system.planets[2].sensor_status %></span></strong><br>
         <% end %>
       </div>
       <div class="planets" id="planet4">
         <% if !@current_system.planets[3].nil? %>
-          <%= image_tag @current_system.planets[3].image %><br>
+          <div class="image_container"><%= image_tag @current_system.planets[3].image %><br></div>
           <%= @current_system.planets[3].name %><br>
           Planet size: <%= @current_system.planets[3].size %><br>
           Fuel Status: <strong><span id="fuel4"><%= @current_system.planets[3].fuel_status %></span></strong><br>
+          Sensors: <strong><span id="sensor4"><%= @current_system.planets[3].sensor_status %></span></strong><br>
         <% end %>
       </div>
     </div>

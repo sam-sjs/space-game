@@ -6,6 +6,7 @@ $(document).ready(function() {
     for(let i = 1; i < 5; i++) {
       showPlanets(`#planet${i}`);
       highlightFuel(`#fuel${i}`);
+      highlightSensors(`#sensor${i}`);
     };
     twinkleTwinkle();
   };
@@ -21,6 +22,21 @@ $(document).ready(function() {
         break;
       case 'No Helium-3 deposits found':
         $(fuelId).css('color', '#FE6B64');
+        break;
+    };
+  };
+
+  const highlightSensors = function(sensorId) {
+    const sensor = $(sensorId).html();
+    switch(sensor) {
+      case 'Point of interest investigated':
+        $(sensorId).css('color', '#779ECB');
+        break;
+      case 'Point of interst found':
+        $(sensorId).css('color', '#77DD77');
+        break;
+      case 'Nothing of note':
+        $(sensorId).css('color', '#FDFD98');
         break;
     };
   };

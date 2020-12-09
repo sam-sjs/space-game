@@ -7,10 +7,17 @@ class Planet < ApplicationRecord
 
   attribute :fuel_present, default: -> do
     chance = rand(100)
-    chance <= 15 ? true : false
+    chance < 15 ? true : false
   end
 
   attribute :fuel_constructed, default: false
+
+  attribute :sensors_detected, default: -> do
+    chance = rand(100)
+    chance < 15 ? true : false
+  end
+
+  attribute :sensors_investigated, default: false
 
   attribute :image, default: -> do
     case @size
@@ -44,4 +51,15 @@ class Planet < ApplicationRecord
       'No Helium-3 deposits found'
     end
   end
+
+  def sensor_status
+    if sensors_detected && sensors_investigated
+      'Point of interest investigated'
+    elsif sensors_detected
+      'Point of interst found'
+    else
+      'Nothing of note'
+    end
+  end
+
 end

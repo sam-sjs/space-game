@@ -280,7 +280,6 @@ hr {
     transform: scale(1, 1);
   }
   100% {
-    100% {
     background-color: rgba(255,255,255,0.0);
     transform: scale(1, 1);
   }

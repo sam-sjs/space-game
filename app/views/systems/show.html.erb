@@ -34,9 +34,11 @@
         </div>
         <%= image_tag "nav-dial.png", id: 'nav_dial' %>
         <%= image_tag "ship.png", id: 'ship' %>
-        <div id="resources">
-          <div id="currency">&#8353;</div>
-          <div id="he3"><sup>3</sup>He</div>
+        <div id="outer_resources">
+          <div id="resources">
+            <div id="currency"><span id="symbol">&#8353;</span></div>
+            <div id="he3"><sup>3</sup>He:</div>
+          </div>
         </div>
       </div>
       <div id="system"><h2><%= @current_system.name %></h2></div>

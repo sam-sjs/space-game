@@ -5,13 +5,9 @@ User.destroy_all
 sam = User.create!(
   name: 'Sam',
   email: 'sam@sam.com',
-  password: 'chicken'
-)
-
-sean = User.create!(
-  name: 'Sean',
-  email: 'sean@sean.com',
-  password: 'chicken'
+  password: 'chicken',
+  currency: 1000,
+  fuel: 10
 )
 
 puts "created #{User.count} users."

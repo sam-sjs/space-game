@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Mono&display=swap');
 
 * {
-  border: 1px solid red;
+  /* border: 1px solid red; */
   box-sizing: border-box;
 }
 
@@ -47,32 +47,36 @@ hr {
 
 #ship_container {
   position: absolute;
-  height: 150px;
-  width: 150px;
-  top: calc(50% - 75px);
-  left: calc(50% - 75px);
+  height: 250px;
+  width: 250px;
+  top: calc(50% - 125px);
+  left: calc(50% - 125px);
 }
 
 #top_nav {
-  top: -50px;
+  top: 0px;
+  left: 50px;
   height: 50px;
   width: 150px;
 }
 
 #bottom_nav {
-  bottom: -50px;
+  bottom: 0px;
+  left: 50px;
   height: 50px;
   width: 150px;
 }
 
 #left_nav {
-  left: -50px;
+  left: 0px;
+  top: 50px;
   height: 150px;
   width: 50px;
 }
 
 #right_nav {
-  right: -50px;
+  right: 0px;
+  top: 50px;
   height: 150px;
   width: 50px;
 }
@@ -90,54 +94,71 @@ hr {
 }
 
 #top_guide {
-  top: -80px;
+  bottom: 260px;
+  left: 50px;
 }
 
 #right_guide {
-  right: -142px;
-  top: 62px;
+  left: 200px;
+  top: 112px;
   transform: rotate(90deg);
 }
 
 #bottom_guide {
-  bottom: -80px;
+  top: 260px;
+  left: 50px;
 }
 
 #left_guide {
-  left: -142px;
-  top: 62px;
+  right: 200px;
+  top: 112px;
   transform: rotate(-90deg);
 }
 
 #nav_dial {
   position: relative;
-  right: 52px;
-  bottom: 52px;
+  right: 2px;
+  bottom: 2px;
   z-index: -1;
 }
 
 #ship {
   position: absolute;
-  top: 0px;
-  left: 5px;
+  top: 50px;
+  left: 53px;
   height: 140px;
   width: 140px;
 }
 
+#outer_resources {
+  position: relative;
+  width: 250px;
+  top: 40px;
+  left: 15px;
+}
+
 #resources {
-  border: 1px solid red;
   display: flex;
-  justify-content: space-between;
-  width: 150px;
-  bottom: -100px;
+  justify-content: center;
+  width: 250px;
+  font-size: 20pt;
+  color: #FDFD98;
 }
 
 #he3 {
-
+  margin-left: 20px;
 }
 
 #currency {
+  position: relative;
+  bottom: 19px;
+  margin-right: 20px;
+}
 
+#symbol {
+  position: relative;
+  top: 12px;
+  font-size: 30pt;
 }
 
 .planets {
@@ -178,8 +199,10 @@ hr {
 }
 
 .planets img {
+  position: relative;
   max-height: 250px;
   max-width: 250px;
+  z-index: 1;
 }
 
 #system {
@@ -187,7 +210,6 @@ hr {
   top: 20px;
   left: 40%;
   width: 20%;
-  height: 50px;
   text-align: center;
   border: 3px solid rgb(68, 135, 175);
   background-color: rgba(255, 255, 255, 0.25);
@@ -196,6 +218,7 @@ hr {
 
 #system h2 {
   margin: 0;
+  padding: 4px;
 }
 
 .star {

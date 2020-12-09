@@ -62,13 +62,43 @@ class Planet < ApplicationRecord
     end
   end
 
-  def build_mine
+  def build_mine(user_id)
+    user = User.find user_id
+    fuel_found = rand(2..4)
+    user.fuel += fuel_found
+    user.save
     self.fuel_constructed = true
     self.save
-    'Mine built'
+    "You have successfully constructed a Mine, check back later to retrieve extracted Helium-3. \n While constructing, your engineers uncovered #{fuel_found} units of Helium-3."
   end
 
-  def investigate_poi
+  def investigate_poi(user_id)
+
+  end
+
+  def found_credits(user_id)
+    user = User.find user_id
+    credits = rand(250..750)
+    user.currency += credits
+    user.save
+    "The away team have returned with a significant cache of precious minerals totalling #{credits}&\#8353; in value."
+  end
+
+  def found_fuel(user_id)
+    user = User.find user_id
+    fuel = rand(1..3)
+    user.fuel += fuel
+    user.save
+    "The sensor ping was caused by multiple small deposits of Helium-3 just benieth the surface.  While not significant enoungh to mine it is easily accessible and the away team collect #{fuel} units before heading back."
+  end
+
+  def disaster(user_id)
+    user = User.find user_id
+    fuel_lost = rand(1..2)
+
+  end
+
+  def found_energy_crystal
 
   end
 

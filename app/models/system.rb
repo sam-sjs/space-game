@@ -1,5 +1,5 @@
 class System < ApplicationRecord
-  has_many :planets
+  has_many :planets, -> {order(:created_at)}
   belongs_to :user
   belongs_to :sys_below, class_name: 'System', optional: true
   belongs_to :sys_above, class_name: 'System', optional: true

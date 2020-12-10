@@ -66,18 +66,19 @@ class Planet < ApplicationRecord
 
   def build_mine
     # Check mine is valid and if so run
-    if self.fuel_present && !self.fuel_constructed
-      fuel_found = rand(2..4)
-      system.user.fuel += fuel_found
-      system.user.save
-      self.mine_time = Time.now.getutc
-      self.fuel_constructed = true
-      self.save
-      "You have successfully constructed a Mine, check back later to retrieve extracted Helium-3. \n While constructing, your engineers uncovered #{fuel_found} units of Helium-3."
-    end
+    return unless self.fuel_present && !self.fuel_constructed
+    fuel_found = rand(2..4)
+    system.user.fuel += fuel_found
+    system.user.save
+    self.mine_time = Time.current
+    self.fuel_constructed = true
+    self.save
+    "You have successfully constructed a Mine, check back later to retrieve extracted Helium-3. \n While constructing, your engineers uncovered #{fuel_found} units of Helium-3."
   end
 
   def collect_fuel
+    # Check fuel collection is valid and if so run
+    return unless self.mine_time
     fuel = ((system.time_entered - self.mine_time) / 60).to_i
     true_fuel = fuel > 10 ? 10 : fuel
     self.mine_time = Time.now.getutc
@@ -89,17 +90,20 @@ class Planet < ApplicationRecord
 
   def investigate_poi
     # Check POI is valid and if so run
-    if self.sensors_detected && !self.sensors_investigated
-      chance = rand(1..100)
-      self.sensors_investigated = true
-      self.save
-      case
-      when chance >=85 then found_energy_crystal
-      when chance < 85 && chance >= 50 then found_credits
-      when chance < 50 && chance >= 15 then found_fuel
-      when chance < 15 then disaster
-      end
+    return unless self.sensors_detected && !self.sensors_investigated
+    chance = 90#rand(1..100)
+    self.sensors_investigated = true
+    self.save
+    case
+    when chance >=85 then found_energy_crystal
+    when chance < 85 && chance >= 50 then found_credits
+    when chance < 50 && chance >= 15 then found_fuel
+    when chance < 15 then disaster
     end
+  end
+
+  def display_victory
+    "VICTORY"
   end
 
   def found_credits
@@ -123,7 +127,7 @@ class Planet < ApplicationRecord
     "DISASTER! While exploring the planet your away team inadvertently woke up an ancient defence system.  You hold under rail gun fire to collect your team before making a hasty escape.  Unfortunately your fuel tanks were breached in the barrage and #{fuel_lost} units of Helium-3 were lost to space before repairs could be made."
   end
 
-  #Ugly method - trying to be too clever, there must be a cleaner way - tidy up later - there's a loop in here somewhere...
+  # Ugly method - trying to be too clever, there must be a cleaner way - tidy up later - there's a loop in here somewhere...
   def found_energy_crystal
     chance = rand(1..100)
     missing_crystals = ['green', 'red', 'blue', 'purple']
@@ -133,15 +137,15 @@ class Planet < ApplicationRecord
       missing_crystals.delete 'green'
       found_crystals << 'green'
     end
-    if !system.user.green_crystals.nil?
+    if !system.user.red_crystals.nil?
       missing_crystals.delete 'red'
       found_crystals << 'red'
     end
-    if !system.user.green_crystals.nil?
+    if !system.user.blue_crystals.nil?
       missing_crystals.delete 'blue'
       found_crystals << 'blue'
     end
-    if !system.user.green_crystals.nil?
+    if !system.user.purple_crystals.nil?
       missing_crystals.delete 'purple'
       found_crystals << 'purple'
     end
@@ -161,25 +165,36 @@ class Planet < ApplicationRecord
   def green_crystal
     system.user.green_crystals = system.user.green_crystals.to_i + 1
     system.user.save
+    if system.user.green_crystals > 0 && system.user.red_crystals > 0 && system.user.blue_crystals > 0 && system.user.purple_crystals > 0
+      return self.display_victory
+    end
     "The away team have had tremendous success!  Uncovering a GREEN energy crystal from the surface of the planet.  You are one step closer to saving your homeworld!"
   end
 
   def red_crystal
     system.user.red_crystals = system.user.red_crystals.to_i + 1
     system.user.save
+    if system.user.green_crystals > 0 && system.user.red_crystals > 0 && system.user.blue_crystals > 0 && system.user.purple_crystals > 0
+      return self.display_victory
+    end
     "The away team have had tremendous success!  Uncovering a RED energy crystal from the surface of the planet.  You are one step closer to saving your homeworld!"
   end
 
   def blue_crystal
     system.user.blue_crystals = system.user.blue_crystals.to_i + 1
     system.user.save
+    if system.user.green_crystals > 0 && system.user.red_crystals > 0 && system.user.blue_crystals > 0 && system.user.purple_crystals > 0
+      return self.display_victory
+    end
     "The away team have had tremendous success!  Uncovering a BLUE energy crystal from the surface of the planet.  You are one step closer to saving your homeworld!"
   end
 
   def purple_crystal
     system.user.purple_crystals = system.user.purple_crystals.to_i + 1
     system.user.save
+    if system.user.green_crystals > 0 && system.user.red_crystals > 0 && system.user.blue_crystals > 0 && system.user.purple_crystals > 0
+      return self.display_victory
+    end
     "The away team have had tremendous success!  Uncovering a PURPLE energy crystal from the surface of the planet.  You are one step closer to saving your homeworld!"
   end
-
 end

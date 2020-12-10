@@ -16,6 +16,7 @@ $(document).ready(function() {
     const fuel = $(fuelId).html();
     if(fuel.substring(0, 4) === 'He-3') {
         $(fuelId).css('color', '#77DD77');
+        $(`${planetId} .collect`).show();
     } else if(fuel === 'Helium-3 Available') {
         $(fuelId).css('color', '#779ECB');
         $(`${planetId} .mine`).show();

@@ -7,7 +7,11 @@ sam = User.create!(
   email: 'sam@sam.com',
   password: 'chicken',
   currency: 1000,
-  fuel: 10
+  fuel: 10,
+  green_crystals: 0,
+  red_crystals: 0,
+  blue_crystals: 0,
+  purple_crystals: 0
 )
 
 puts "created #{User.count} users."
@@ -20,7 +24,8 @@ System.destroy_all
 sys1 = System.create!(
   name: 'Alpha',
   image: 'http://placekitten.com/500/500',
-  user_id: sam.id
+  user_id: sam.id,
+  time_entered: Time.now.getutc
 )
 
 puts "created #{System.count} users."
@@ -43,7 +48,7 @@ Planet.create!(
   name: "Planet 2",
   size: 2,
   fuel_present: true,
-  fuel_constructed: true,
+  fuel_constructed: false,
   image: 'http://placekitten.com/200/200',
   system_id: sys1.id
 )

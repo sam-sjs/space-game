@@ -10,7 +10,6 @@ class SystemsController < ApplicationController
     next_sys = System.check_system(params[:prev_loc], params[:sys_id])
     if next_sys
       arrival = System.find(next_sys)
-      arrival.time_entered = Time.now.getutc
       # Send the previous location (i.e. above, below, left, right) as a 'setter' and make equal to previous systems id
       arrival.send(params[:prev_loc]+"=", params[:sys_id])
       arrival.save
@@ -22,8 +21,7 @@ class SystemsController < ApplicationController
 
       system = System.create user_id: @current_user.id
       Planet.planet_setup(system.id, system.name)
-      system.time_entered = Time.now.getutc
-      # Send the previous location (i.e. above, below, left, right) as a 'setter' and make equal to previous systems id
+      # See above comment
       system.send(params[:prev_loc]+"=", params[:sys_id])
       system.save
       redirect_to system_path(system.id)
@@ -35,6 +33,9 @@ class SystemsController < ApplicationController
 
   def show
     @current_system = System.find params[:id]
+    # Set time entered for mining function to use
+    @current_system.time_entered = Time.current
+    @current_system.save
   end
 
   def edit

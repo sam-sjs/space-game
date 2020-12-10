@@ -85,7 +85,7 @@ hr {
   background-color: #FDFD98;
 }
 
-#new_user_container {
+.new_user_container {
   position: relative;
   left: calc(50vw - 250px);
   width: 500px;

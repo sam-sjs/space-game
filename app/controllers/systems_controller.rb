@@ -11,7 +11,7 @@ class SystemsController < ApplicationController
     @current_user.fuel -= 1
     @current_user.save
     # Check if system in this direction has been visited before, if it has return that system, if not create new system
-    if params[:startup] = false
+    if !params[:startup]
       next_sys = System.check_system(params[:prev_loc], params[:sys_id])
     else
       next_sys = false

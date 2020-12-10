@@ -2,7 +2,6 @@
       <div id="ship_container">
         <!-- Navigation Links -->
         <!-- Navigate Up -->
-        <% p "SYSTEM:", @current_system %>
         <%= link_to '', systems_path(prev_loc: "sys_below_id", sys_id: @current_system.id), id: 'top_nav', class: 'nav_links', method: 'post' %>
         <div id="top_guide" class="direction_guides">
           <% if @current_system.sys_above_id != nil %>

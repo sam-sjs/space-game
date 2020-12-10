@@ -1,20 +1,25 @@
-<h2>Login</h2>
+<div class="new_user_container">
+  <h2>Login</h2>
 
-<% if flash[:error] %>
-  <br>
-  <strong><%= flash[:error] %></strong>
-  <br>
-<% end %>
-
-
-<%= form_with url: login_path, local: true do |f| %>
-  <ul>
-    <%= f.label :email %>
-    <%= f.text_field :email %>
+  <% if flash[:error] %>
     <br>
-    <%= f.label :password %>
-    <%= f.password_field :password %>
+    <strong><%= flash[:error] %></strong>
     <br>
-    <%= f.submit 'Login' %>
-  </ul>
-<% end %>
+  <% end %>
+
+  <table>
+    <%= form_with url: login_path, local: true do |f| %>
+      <tr>
+        <td class="label"><%= f.label :email %></td>
+        <td><%= f.text_field :email %></td>
+      </tr>
+      <tr>
+        <td class="label"><%= f.label :password %></td>
+        <td><%= f.password_field :password %></td>
+      </tr>
+      <tr>
+        <td><%= f.submit 'Login' %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>

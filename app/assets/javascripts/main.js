@@ -3,8 +3,9 @@ $(document).ready(function() {
   console.log("jQuery running!");
 
   const setupSystem = function() {
-    for(let i = 1; i < 5; i++) {
-      showPlanets(`#planet${i}`);
+    const count = parseInt($('#system h2').html().slice(-2, -1)) + 1;
+    for(let i = 1; i < count; i++) {
+      $(`#planet${i}`).show();
       highlightFuel(`#fuel${i}`, `#planet${i}`);
       highlightSensors(`#sensor${i}`, `#planet${i}`);
     };
@@ -13,17 +14,13 @@ $(document).ready(function() {
 
   const highlightFuel = function(fuelId, planetId) {
     const fuel = $(fuelId).html();
-    switch(fuel) {
-      case 'Helium-3 is being mined...':
+    if(fuel.substring(0, 4) === 'He-3') {
         $(fuelId).css('color', '#77DD77');
-        break;
-      case 'Helium-3 Available':
+    } else if(fuel === 'Helium-3 Available') {
         $(fuelId).css('color', '#779ECB');
         $(`${planetId} .mine`).show();
-        break;
-      case 'No Helium-3 deposits found':
+    } else if(fuel === 'No Helium-3 deposits found') {
         $(fuelId).css('color', '#FE6B64');
-        break;
     };
   };
 
@@ -44,11 +41,7 @@ $(document).ready(function() {
   };
 
   const showPlanets = function(planetId) {
-    if($(planetId).find('img').length) {
-      $(planetId).show();
-    } else {
-      $(planetId).hide();
-    };
+    $(planetId).show();
   };
 
   const twinkleTwinkle = function() {

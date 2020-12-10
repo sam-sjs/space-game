@@ -49,7 +49,7 @@
         </div>
       </div> <!-- End #ship_container -->
       <!-- System Objects -->
-      <div id="system"><h2><%= @current_system.name %></h2></div>
+      <div id="system"><h2><%= @current_system.name %>(<%= @current_system.planets.length %>)</h2></div>
       <!-- Planet One -->
       <div class="planets" id="planet1">
         <div class="image_container"><%= image_tag @current_system.planets[0].image %><br></div>
@@ -60,7 +60,7 @@
         <div class="button_container">
           <%= button_to "Build Mine", planet_path(@current_system.planets[0].id, type: "mine"), method: "patch", class: "buttons mine" %>
           <%= button_to "Investigate POI", planet_path(@current_system.planets[0].id, type: "investigate"), method: "patch", class: "buttons investigate" %>
-          <input type="button" value="Collect Fuel" class="buttons collect">
+          <%= button_to "Collect Fuel", planet_path(@current_system.planets[0].id, type: "collect"), method: "patch", class: "buttons collect" %>
         </div>
       </div>
       <!-- Planet Two -->
@@ -74,7 +74,7 @@
           <div class="button_container">
             <%= button_to "Build Mine", planet_path(@current_system.planets[1].id, type: "mine"), method: "patch", class: "buttons mine" %>
             <%= button_to "Investigate POI", planet_path(@current_system.planets[1].id, type: "investigate"), method: "patch", class: "buttons investigate" %>
-            <input type="button" value="Collect Fuel" class="buttons collect">
+            <%= button_to "Collect Fuel", planet_path(@current_system.planets[1].id, type: "collect"), method: "patch", class: "buttons collect" %>
           </div>
         <% end %>
       </div>
@@ -89,7 +89,7 @@
           <div class="button_container">
             <%= button_to "Build Mine", planet_path(@current_system.planets[2].id, type: "mine"), method: "patch", class: "buttons mine" %>
             <%= button_to "Investigate POI", planet_path(@current_system.planets[2].id, type: "investigate"), method: "patch", class: "buttons investigate" %>
-            <input type="button" value="Collect Fuel" class="buttons collect">
+            <%= button_to "Collect Fuel", planet_path(@current_system.planets[2].id, type: "collect"), method: "patch", class: "buttons collect" %>
           </div>
         <% end %>
       </div>
@@ -104,7 +104,7 @@
           <div class="button_container">
             <%= button_to "Build Mine", planet_path(@current_system.planets[3].id, type: "mine"), method: "patch", class: "buttons mine" %>
             <%= button_to "Investigate POI", planet_path(@current_system.planets[3].id, type: "investigate"), method: "patch", class: "buttons investigate" %>
-            <input type="button" value="Collect Fuel" class="buttons collect">
+            <%= button_to "Collect Fuel", planet_path(@current_system.planets[3].id, type: "collect"), method: "patch", class: "buttons collect" %>
           </div>
         <% end %>
       </div>

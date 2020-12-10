@@ -161,6 +161,7 @@ hr {
 
 .planets {
   position: absolute;
+  display: none;
   width: 30%;
   height: 40%;
   max-width: 450px;

@@ -44,7 +44,9 @@ class Planet < ApplicationRecord
 
   def fuel_status
     if fuel_present && fuel_constructed
-      'Helium-3 is being mined...'
+      fuel = ((system.time_entered - self.mine_time) / 60).to_i
+      true_fuel = fuel > 10 ? 10 : fuel
+      "He-3 Mined...#{true_fuel}"
     elsif fuel_present
       'Helium-3 Available'
     else
@@ -68,10 +70,21 @@ class Planet < ApplicationRecord
       fuel_found = rand(2..4)
       system.user.fuel += fuel_found
       system.user.save
+      self.mine_time = Time.now.getutc
       self.fuel_constructed = true
       self.save
       "You have successfully constructed a Mine, check back later to retrieve extracted Helium-3. \n While constructing, your engineers uncovered #{fuel_found} units of Helium-3."
     end
+  end
+
+  def collect_fuel
+    fuel = ((system.time_entered - self.mine_time) / 60).to_i
+    true_fuel = fuel > 10 ? 10 : fuel
+    self.mine_time = Time.now.getutc
+    self.save
+    system.user.fuel += true_fuel
+    system.user.save
+    "#{true_fuel} units of Helium-3 collected from your mining station"
   end
 
   def investigate_poi

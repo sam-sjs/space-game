@@ -91,7 +91,7 @@ class Planet < ApplicationRecord
   def investigate_poi
     # Check POI is valid and if so run
     return unless self.sensors_detected && !self.sensors_investigated
-    chance = 90#rand(1..100)
+    chance = rand(1..100)
     self.sensors_investigated = true
     self.save
     case

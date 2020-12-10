@@ -39,6 +39,52 @@ hr {
   margin: 0;
 }
 
+#main {
+  display: flex;
+  justify-content: center;
+  font-size: 100px;
+}
+
+#alert {
+  font-size: 20pt;
+  color: #FE6B64;
+}
+
+.text {
+  display: flex;
+  position: relative;
+  margin-top: 50px;
+  left: calc(50vw - 300px);
+  justify-content: center;
+  color: #FDFD98;
+  font-size: 16pt;
+  width: 600px;
+  text-align: center;
+}
+
+#links_container {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.start_links {
+  text-decoration: none;
+  border: 3px solid #FDFD98;
+  background-color: #779ECB;
+  color: black;
+  width: 210px;
+  border-radius: 20px;
+  font-size: 22pt;
+  text-align: center;
+  margin: 15px;
+}
+
+.start_links:hover {
+  border: 3px solid #779ECB;
+  background-color: #FDFD98;
+}
+
 #page_container {
   position: relative;
   height: calc(100% - 36px);
@@ -157,6 +203,10 @@ hr {
   margin-right: 20px;
   width: 155px;
   text-align: right;
+}
+
+#crystal_container {
+  display: none;
 }
 
 #crystals {

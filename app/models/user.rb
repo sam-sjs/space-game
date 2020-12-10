@@ -10,4 +10,6 @@ class User < ApplicationRecord
   attribute :red_crystals, default: 0
   attribute :blue_crystals, default: 0
   attribute :purple_crystals, default: 0
+  attribute :currency, default: 1000
+  attribute :fuel, default: 11
 end

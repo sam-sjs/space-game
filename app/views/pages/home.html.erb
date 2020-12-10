@@ -1,2 +1,18 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div id="main">SPACE GAME!!!</div>
+
+<div id="alert" class="text">
+  ALERT!: Energy crystals nearing depletion - Planetary defences weakening
+</div>
+
+<div class="text">
+  As the finest captain in the Federation Navy you have been tasked with finding FOUR replacement energy crystals to ensure the safety of your people.  You must set off immediately before word of your weakened defences spreads to those who might intend you harm!
+</div>
+
+<div id="links_container">
+  <% if @current_user.present? %>
+    <%= link_to 'Start Game!', systems_path(startup: true), method: 'post', class: 'start_links' %>
+  <% else %>
+    <%= link_to 'Login', login_path, class: 'start_links' %>
+    <%= link_to 'Signup', new_user_path, class: 'start_links' %>
+  <% end %>
+</div>

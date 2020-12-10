@@ -47,11 +47,13 @@
             <div id="he3"><sup>3</sup>He: <%= @current_user.fuel %></div>
           </div>
         </div>
-        <div id="crystals">
-          <%= image_tag ('green.png') if @current_user.green_crystals > 0 %>
-          <%= image_tag ('red.png') if @current_user.red_crystals > 0 %>
-          <%= image_tag ('blue.png') if @current_user.blue_crystals > 0 %>
-          <%= image_tag ('purple.png') if @current_user.purple_crystals > 0 %>
+        <div id="crystal_container">
+          <div id="crystals">
+            <%= image_tag ('green.png') if @current_user.green_crystals > 0 %>
+            <%= image_tag ('red.png') if @current_user.red_crystals > 0 %>
+            <%= image_tag ('blue.png') if @current_user.blue_crystals > 0 %>
+            <%= image_tag ('purple.png') if @current_user.purple_crystals > 0 %>
+          </div>
         </div>
       </div> <!-- End #ship_container -->
       <!-- System Objects -->

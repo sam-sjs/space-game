@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_10_045758) do
+ActiveRecord::Schema.define(version: 2020_12_10_114428) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(version: 2020_12_10_045758) do
     t.integer "red_crystals"
     t.integer "blue_crystals"
     t.integer "purple_crystals"
+    t.integer "last_system"
   end
 
 end

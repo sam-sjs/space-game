@@ -9,6 +9,9 @@ $(document).ready(function() {
       highlightFuel(`#fuel${i}`, `#planet${i}`);
       highlightSensors(`#sensor${i}`, `#planet${i}`);
     };
+    if($('#crystals').find('>img').length) {
+      $('#crystal_container').show();
+    };
     twinkleTwinkle();
   };
 

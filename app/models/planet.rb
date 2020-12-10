@@ -73,7 +73,7 @@ class Planet < ApplicationRecord
   end
 
   def investigate_poi(user_id)
-
+    found_energy_crystal(user_id)
   end
 
   def found_credits(user_id)
@@ -95,11 +95,73 @@ class Planet < ApplicationRecord
   def disaster(user_id)
     user = User.find user_id
     fuel_lost = rand(1..2)
-
+    user.fuel -= fuel_lost
+    user.save
+    "DISASTER! While exploring the planet your away team inadvertently woke up an ancient defence system.  You hold under rail gun fire to collect your team before making a hasty escape.  Unfortunately your fuel tanks were breached in the barrage and #{fuel_lost} units of Helium-3 were lost to space before repairs could be made."
   end
 
-  def found_energy_crystal
+  #Ugly method - trying to be too clever, there must be a cleaner way - tidy up later - there's a loop in here somewhere...
+  def found_energy_crystal(user_id)
+    user = User.find user_id
+    chance = rand(1..100)
+    missing_crystals = ['green', 'red', 'blue', 'purple']
+    found_crystals = []
+    choose_crystal = ''
+    if !system.user.green_crystals.nil?
+      missing_crystals.delete 'green'
+      found_crystals << 'green'
+    end
+    if !system.user.green_crystals.nil?
+      missing_crystals.delete 'red'
+      found_crystals << 'red'
+    end
+    if !system.user.green_crystals.nil?
+      missing_crystals.delete 'blue'
+      found_crystals << 'blue'
+    end
+    if !system.user.green_crystals.nil?
+      missing_crystals.delete 'purple'
+      found_crystals << 'purple'
+    end
+    if (chance < 26 && found_crystals.length > 0) || found_crystals.length == 4
+      choose_crystal = found_crystals.sample()
+    else
+      choose_crystal = missing_crystals.sample()
+    end
+    case choose_crystal
+    when 'green' then green_crystal(user_id)
+    when 'red' then red_crystal(user_id)
+    when 'blue' then blue_crystal(user_id)
+    when 'purple' then purple_crystal(user_id)
+    end
+  end
 
+  def green_crystal(user_id)
+    user = User.find user_id
+    user.green_crystals = user.green_crystals.to_i + 1
+    user.save
+    "The away team have had tremendous success!  Uncovering a GREEN energy crystal from the surface of the planet.  You are one step closer to saving your homeworld!"
+  end
+
+  def red_crystal(user_id)
+    user = User.find user_id
+    user.red_crystals = user.red_crystals.to_i + 1
+    user.save
+    "The away team have had tremendous success!  Uncovering a RED energy crystal from the surface of the planet.  You are one step closer to saving your homeworld!"
+  end
+
+  def blue_crystal(user_id)
+    user = User.find user_id
+    user.blue_crystals = user.blue_crystals.to_i + 1
+    user.save
+    "The away team have had tremendous success!  Uncovering a BLUE energy crystal from the surface of the planet.  You are one step closer to saving your homeworld!"
+  end
+
+  def purple_crystal(user_id)
+    user = User.find user_id
+    user.purple_crystals = user.purple_crystals.to_i + 1
+    user.save
+    "The away team have had tremendous success!  Uncovering a PURPLE energy crystal from the surface of the planet.  You are one step closer to saving your homeworld!"
   end
 
 end

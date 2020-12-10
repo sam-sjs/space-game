@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_09_050302) do
+ActiveRecord::Schema.define(version: 2020_12_09_233307) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,6 +56,10 @@ ActiveRecord::Schema.define(version: 2020_12_09_050302) do
     t.datetime "updated_at", null: false
     t.integer "currency"
     t.integer "fuel"
+    t.integer "green_crystals"
+    t.integer "red_crystals"
+    t.integer "blue_crystals"
+    t.integer "purple_crystals"
   end
 
 end

@@ -62,47 +62,56 @@ class Planet < ApplicationRecord
     end
   end
 
-  def build_mine(user_id)
-    user = User.find user_id
-    fuel_found = rand(2..4)
-    user.fuel += fuel_found
-    user.save
-    self.fuel_constructed = true
-    self.save
-    "You have successfully constructed a Mine, check back later to retrieve extracted Helium-3. \n While constructing, your engineers uncovered #{fuel_found} units of Helium-3."
+  def build_mine
+    # Check mine is valid and if so run
+    if self.fuel_present && !self.fuel_constructed
+      fuel_found = rand(2..4)
+      system.user.fuel += fuel_found
+      system.user.save
+      self.fuel_constructed = true
+      self.save
+      "You have successfully constructed a Mine, check back later to retrieve extracted Helium-3. \n While constructing, your engineers uncovered #{fuel_found} units of Helium-3."
+    end
   end
 
-  def investigate_poi(user_id)
-    found_energy_crystal(user_id)
+  def investigate_poi
+    # Check POI is valid and if so run
+    if self.sensors_detected && !self.sensors_investigated
+      chance = rand(1..100)
+      self.sensors_investigated = true
+      self.save
+      case
+      when chance >=85 then found_energy_crystal
+      when chance < 85 && chance >= 50 then found_credits
+      when chance < 50 && chance >= 15 then found_fuel
+      when chance < 15 then disaster
+      end
+    end
   end
 
-  def found_credits(user_id)
-    user = User.find user_id
+  def found_credits
     credits = rand(250..750)
-    user.currency += credits
-    user.save
+    system.user.currency += credits
+    system.user.save
     "The away team have returned with a significant cache of precious minerals totalling #{credits}&\#8353; in value."
   end
 
-  def found_fuel(user_id)
-    user = User.find user_id
+  def found_fuel
     fuel = rand(1..3)
-    user.fuel += fuel
-    user.save
+    system.user.fuel += fuel
+    system.user.save
     "The sensor ping was caused by multiple small deposits of Helium-3 just benieth the surface.  While not significant enoungh to mine it is easily accessible and the away team collect #{fuel} units before heading back."
   end
 
-  def disaster(user_id)
-    user = User.find user_id
+  def disaster
     fuel_lost = rand(1..2)
-    user.fuel -= fuel_lost
-    user.save
+    system.user.fuel -= fuel_lost
+    system.user.save
     "DISASTER! While exploring the planet your away team inadvertently woke up an ancient defence system.  You hold under rail gun fire to collect your team before making a hasty escape.  Unfortunately your fuel tanks were breached in the barrage and #{fuel_lost} units of Helium-3 were lost to space before repairs could be made."
   end
 
   #Ugly method - trying to be too clever, there must be a cleaner way - tidy up later - there's a loop in here somewhere...
-  def found_energy_crystal(user_id)
-    user = User.find user_id
+  def found_energy_crystal
     chance = rand(1..100)
     missing_crystals = ['green', 'red', 'blue', 'purple']
     found_crystals = []
@@ -123,44 +132,40 @@ class Planet < ApplicationRecord
       missing_crystals.delete 'purple'
       found_crystals << 'purple'
     end
-    if (chance < 26 && found_crystals.length > 0) || found_crystals.length == 4
-      choose_crystal = found_crystals.sample()
+    if chance < 26 && found_crystals.length > 0 || found_crystals.length == 4
+      choose_crystal = found_crystals.sample
     else
-      choose_crystal = missing_crystals.sample()
+      choose_crystal = missing_crystals.sample
     end
     case choose_crystal
-    when 'green' then green_crystal(user_id)
-    when 'red' then red_crystal(user_id)
-    when 'blue' then blue_crystal(user_id)
-    when 'purple' then purple_crystal(user_id)
+    when 'green' then green_crystal
+    when 'red' then red_crystal
+    when 'blue' then blue_crystal
+    when 'purple' then purple_crystal
     end
   end
 
-  def green_crystal(user_id)
-    user = User.find user_id
-    user.green_crystals = user.green_crystals.to_i + 1
-    user.save
+  def green_crystal
+    system.user.green_crystals = system.user.green_crystals.to_i + 1
+    system.user.save
     "The away team have had tremendous success!  Uncovering a GREEN energy crystal from the surface of the planet.  You are one step closer to saving your homeworld!"
   end
 
-  def red_crystal(user_id)
-    user = User.find user_id
-    user.red_crystals = user.red_crystals.to_i + 1
-    user.save
+  def red_crystal
+    system.user.red_crystals = system.user.red_crystals.to_i + 1
+    system.user.save
     "The away team have had tremendous success!  Uncovering a RED energy crystal from the surface of the planet.  You are one step closer to saving your homeworld!"
   end
 
-  def blue_crystal(user_id)
-    user = User.find user_id
-    user.blue_crystals = user.blue_crystals.to_i + 1
-    user.save
+  def blue_crystal
+    system.user.blue_crystals = system.user.blue_crystals.to_i + 1
+    system.user.save
     "The away team have had tremendous success!  Uncovering a BLUE energy crystal from the surface of the planet.  You are one step closer to saving your homeworld!"
   end
 
-  def purple_crystal(user_id)
-    user = User.find user_id
-    user.purple_crystals = user.purple_crystals.to_i + 1
-    user.save
+  def purple_crystal
+    system.user.purple_crystals = system.user.purple_crystals.to_i + 1
+    system.user.save
     "The away team have had tremendous success!  Uncovering a PURPLE energy crystal from the surface of the planet.  You are one step closer to saving your homeworld!"
   end
 

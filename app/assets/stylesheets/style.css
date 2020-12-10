@@ -215,6 +215,10 @@ hr {
   display: none;
 }
 
+.investigate {
+  display: none;
+}
+
 .image_container {
   width: 250px;
   height: 250px;
@@ -247,7 +251,7 @@ hr {
 #messaging {
   border: 1px solid red;
   position: absolute;
-  top: 200px;
+  top: 110px;
   left: 40%;
   width: 20%;
   text-align: center;

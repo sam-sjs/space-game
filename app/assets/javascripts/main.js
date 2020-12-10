@@ -6,7 +6,7 @@ $(document).ready(function() {
     for(let i = 1; i < 5; i++) {
       showPlanets(`#planet${i}`);
       highlightFuel(`#fuel${i}`, `#planet${i}`);
-      highlightSensors(`#sensor${i}`);
+      highlightSensors(`#sensor${i}`, `#planet${i}`);
     };
     twinkleTwinkle();
   };
@@ -27,7 +27,7 @@ $(document).ready(function() {
     };
   };
 
-  const highlightSensors = function(sensorId) {
+  const highlightSensors = function(sensorId, planetId) {
     const sensor = $(sensorId).html();
     switch(sensor) {
       case 'Point of interest investigated':
@@ -35,6 +35,7 @@ $(document).ready(function() {
         break;
       case 'Point of interst found':
         $(sensorId).css('color', '#77DD77');
+        $(`${planetId} .investigate`).show();
         break;
       case 'Nothing of note':
         $(sensorId).css('color', '#FDFD98');

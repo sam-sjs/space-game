@@ -85,10 +85,27 @@ hr {
   background-color: #FDFD98;
 }
 
+#new_user_container {
+  position: relative;
+  left: calc(50vw - 250px);
+  width: 500px;
+}
+
 #page_container {
   position: relative;
   height: calc(100% - 36px);
   width: 100%;
+}
+
+table {
+  text-align: center;
+}
+
+.label {
+  border: 3px solid #779ECB;
+  background-color: rgba(255,255,255,0.25);
+  border-radius: 10px;
+  padding: 2px;
 }
 
 #ship_container {

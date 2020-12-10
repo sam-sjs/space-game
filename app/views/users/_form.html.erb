@@ -1,18 +1,25 @@
 
-<%= form_with model: @user, local: true do |f| %>
+  <%= form_with model: @user, local: true do |f| %>
+    <table>
+      <tr>
+        <td class="label"><%= f.label :name %></td>
+        <td><%= f.text_field :name %></td>
+      </tr>
+      <tr>
+        <td class="label"><%= f.label :email %></td>
+        <td><%= f.text_field :email %></td>
+      </tr>
+      <tr>
+        <td class="label"><%= f.label :password %></td>
+        <td><%= f.password_field :password %></td>
+      </tr>
+      <tr>
+        <td class="label"><%= f.label :password_confirmation %></td>
+        <td><%= f.password_field :password_confirmation %></td>
+      </tr>
+      <tr>
+        <td><%= f.submit 'Play Game!' %></td>
+      </tr>
+    </table>
 
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <br>
-  <%= f.label :email %>
-  <%= f.text_field :email %>
-  <br>
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-  <br>
-  <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %>
-  <br>
-  <%= f.submit 'Play Game!' %>
-
-<% end %>
+  <% end %>

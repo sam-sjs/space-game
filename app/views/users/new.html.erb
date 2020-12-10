@@ -1,15 +1,17 @@
-<h2>Create New User:</h2>
+<div id="new_user_container">
+  <h2>Create New User:</h2>
 
-<% if @user.errors.full_messages.any? %>
-  <strong>Please correct the following errors:</strong>
-  <ul>
-    <% @user.errors.full_messages.each do |e| %>
-      <li>
-        <%= e %>
-      </li>
-    <% end %>
-  </ul>
-<% end %>
+  <% if @user.errors.full_messages.any? %>
+    <strong>Please correct the following errors:</strong>
+    <ul>
+      <% @user.errors.full_messages.each do |e| %>
+        <li>
+          <%= e %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
 
 
-<%= render partial: 'form'  %>
+  <%= render partial: 'form'  %>
+</div>

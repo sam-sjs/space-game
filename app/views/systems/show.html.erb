@@ -10,6 +10,7 @@
             <%= '???' %>
           <% end %>
         </div>
+
         <!-- Navigate Right -->
         <%= link_to '', systems_path(prev_loc: "sys_left_id", sys_id: @current_system.id), id: 'right_nav', class: 'nav_links', method: 'post' %>
         <div id="right_guide" class="direction_guides">
@@ -19,6 +20,7 @@
             <%= '???' %>
           <% end %>
         </div>
+
         <!-- Navigate Down -->
         <%= link_to '', systems_path(prev_loc: "sys_above_id", sys_id: @current_system.id), id: 'bottom_nav', class: 'nav_links', method: 'post' %>
         <div id="bottom_guide" class="direction_guides">
@@ -28,6 +30,7 @@
             <%= '???' %>
           <% end %>
         </div>
+
         <!-- Navigate Left -->
         <%= link_to '', systems_path(prev_loc: "sys_right_id", sys_id: @current_system.id), id: 'left_nav', class: 'nav_links', method: 'post' %>
         <div id="left_guide" class="direction_guides">
@@ -37,9 +40,11 @@
             <%= '???' %>
           <% end %>
         </div>
+
         <!-- Central Console Images -->
         <%= image_tag "nav-dial.png", id: 'nav_dial' %>
         <%= image_tag "ship.png", id: 'ship' %>
+
         <!-- Ship Resources -->
         <div id="outer_resources">
           <div id="resources">
@@ -56,6 +61,7 @@
           </div>
         </div>
       </div> <!-- End #ship_container -->
+
       <!-- System Objects -->
       <div id="system"><h2><%= @current_system.name %>(<%= @current_system.planets.length %>)</h2></div>
       <!-- Planet One -->
@@ -71,6 +77,7 @@
           <%= button_to "Collect Fuel", planet_path(@current_system.planets[0].id, type: "collect"), method: "patch", class: "buttons collect" %>
         </div>
       </div>
+
       <!-- Planet Two -->
       <div class="planets" id="planet2">
         <% if !@current_system.planets[1].nil? %>
@@ -86,6 +93,7 @@
           </div>
         <% end %>
       </div>
+
       <!-- Planet Three -->
       <div class="planets" id="planet3">
         <% if !@current_system.planets[2].nil? %>
@@ -101,6 +109,7 @@
           </div>
         <% end %>
       </div>
+
       <!-- Planet Four -->
       <div class="planets" id="planet4">
         <% if !@current_system.planets[3].nil? %>
@@ -116,6 +125,8 @@
           </div>
         <% end %>
       </div>
+
+      <!-- Game Messaging -->
       <% if flash[:notice] %>
         <div id="messaging"><%== flash[:notice] %></div>
       <% end %>

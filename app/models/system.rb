@@ -14,7 +14,7 @@ class System < ApplicationRecord
 
   attribute :image, default: 'http://placekitten.com/500/500'
 
-
+  # Check if a system has already been visited and return the system if it has
   def self.check_system(prev_loc, sys_id)
     system = System.find sys_id
     if prev_loc == "sys_below_id" && system.sys_above_id.present?

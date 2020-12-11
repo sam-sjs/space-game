@@ -95,10 +95,10 @@ class Planet < ApplicationRecord
     self.sensors_investigated = true
     self.save
     case
-    when chance >=85 then found_energy_crystal
-    when chance < 85 && chance >= 50 then found_credits
-    when chance < 50 && chance >= 15 then found_fuel
-    when chance < 15 then disaster
+    when chance >=86 then found_energy_crystal
+    when chance < 86 && chance >= 51 then found_credits
+    when chance < 51 && chance >= 16 then found_fuel
+    when chance < 16 then disaster
     end
   end
 

@@ -72,8 +72,14 @@
         Fuel Status: <strong><span id="fuel1"><%= @current_system.planets[0].fuel_status %></span></strong><br>
         Sensors: <strong><span id="sensor1"><%= @current_system.planets[0].sensor_status %></span></strong><br>
         <div class="button_container">
-          <%= button_to "Build Mine", planet_path(@current_system.planets[0].id, type: "mine"), method: "patch", class: "buttons mine" %>
-          <%= button_to "Investigate POI", planet_path(@current_system.planets[0].id, type: "investigate"), method: "patch", class: "buttons investigate" %>
+          <div class="mine_container">
+            <%= button_to "Build Mine", planet_path(@current_system.planets[0].id, type: "mine"), method: "patch", class: "buttons mine" %>
+            <div class="mine_price">-500&#8353;</div>
+          </div>
+          <div class="investigate_container">
+            <%= button_to "Investigate POI", planet_path(@current_system.planets[0].id, type: "investigate"), method: "patch", class: "buttons investigate" %>
+            <div class="investigate_price">-He3</div>
+          </div>
           <%= button_to "Collect Fuel", planet_path(@current_system.planets[0].id, type: "collect"), method: "patch", class: "buttons collect" %>
         </div>
       </div>
@@ -87,8 +93,14 @@
           Fuel Status: <strong><span id="fuel2"><%= @current_system.planets[1].fuel_status %></span></strong><br>
           Sensors: <strong><span id="sensor2"><%= @current_system.planets[1].sensor_status %></span></strong><br>
           <div class="button_container">
-            <%= button_to "Build Mine", planet_path(@current_system.planets[1].id, type: "mine"), method: "patch", class: "buttons mine" %>
-            <%= button_to "Investigate POI", planet_path(@current_system.planets[1].id, type: "investigate"), method: "patch", class: "buttons investigate" %>
+            <div class="mine_container">
+              <%= button_to "Build Mine", planet_path(@current_system.planets[1].id, type: "mine"), method: "patch", class: "buttons mine" %>
+              <div class="mine_price">500&#8353;</div>
+            </div>
+            <div class="investigate_container">
+              <%= button_to "Investigate POI", planet_path(@current_system.planets[1].id, type: "investigate"), method: "patch", class: "buttons investigate" %>
+              <div class="investigate_price">-He3</div>
+            </div>
             <%= button_to "Collect Fuel", planet_path(@current_system.planets[1].id, type: "collect"), method: "patch", class: "buttons collect" %>
           </div>
         <% end %>
@@ -103,8 +115,14 @@
           Fuel Status: <strong><span id="fuel3"><%= @current_system.planets[2].fuel_status %></span></strong><br>
           Sensors: <strong><span id="sensor3"><%= @current_system.planets[2].sensor_status %></span></strong><br>
           <div class="button_container">
-            <%= button_to "Build Mine", planet_path(@current_system.planets[2].id, type: "mine"), method: "patch", class: "buttons mine" %>
-            <%= button_to "Investigate POI", planet_path(@current_system.planets[2].id, type: "investigate"), method: "patch", class: "buttons investigate" %>
+            <div class="mine_container">
+              <%= button_to "Build Mine", planet_path(@current_system.planets[2].id, type: "mine"), method: "patch", class: "buttons mine" %>
+              <div class="mine_price">-500&#8353;</div>
+            </div>
+            <div class="investigate_container">
+              <%= button_to "Investigate POI", planet_path(@current_system.planets[2].id, type: "investigate"), method: "patch", class: "buttons investigate" %>
+              <div class="investigate_price">-He3</div>
+            </div>
             <%= button_to "Collect Fuel", planet_path(@current_system.planets[2].id, type: "collect"), method: "patch", class: "buttons collect" %>
           </div>
         <% end %>
@@ -119,8 +137,14 @@
           Fuel Status: <strong><span id="fuel4"><%= @current_system.planets[3].fuel_status %></span></strong><br>
           Sensors: <strong><span id="sensor4"><%= @current_system.planets[3].sensor_status %></span></strong><br>
           <div class="button_container">
-            <%= button_to "Build Mine", planet_path(@current_system.planets[3].id, type: "mine"), method: "patch", class: "buttons mine" %>
-            <%= button_to "Investigate POI", planet_path(@current_system.planets[3].id, type: "investigate"), method: "patch", class: "buttons investigate" %>
+            <div class="mine_container">
+              <%= button_to "Build Mine", planet_path(@current_system.planets[3].id, type: "mine"), method: "patch", class: "buttons mine" %>
+              <div class="mine_price">500&#8353;</div>
+            </div>
+            <div class="investigate_container">
+              <%= button_to "Investigate POI", planet_path(@current_system.planets[3].id, type: "investigate"), method: "patch", class: "buttons investigate" %>
+              <div class="investigate_price">-He3</div>
+            </div>
             <%= button_to "Collect Fuel", planet_path(@current_system.planets[3].id, type: "collect"), method: "patch", class: "buttons collect" %>
           </div>
         <% end %>

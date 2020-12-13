@@ -22,7 +22,7 @@ $(document).ready(function() {
         $(`${planetId} .collect`).show();
     } else if(fuel === 'Helium-3 Available') {
         $(fuelId).css('color', '#779ECB');
-        $(`${planetId} .mine`).show();
+        $(`${planetId} .mine_container`).show();
     } else if(fuel === 'No Helium-3 deposits found') {
         $(fuelId).css('color', '#FE6B64');
     };
@@ -36,16 +36,12 @@ $(document).ready(function() {
         break;
       case 'Point of interst found':
         $(sensorId).css('color', '#77DD77');
-        $(`${planetId} .investigate`).show();
+        $(`${planetId} .investigate_container`).show();
         break;
       case 'Nothing of note':
         $(sensorId).css('color', '#FDFD98');
         break;
     };
-  };
-
-  const showPlanets = function(planetId) {
-    $(planetId).show();
   };
 
   const twinkleTwinkle = function() {

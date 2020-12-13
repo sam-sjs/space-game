@@ -277,7 +277,7 @@ table {
 
 .buttons {
   position: relative;
-  display: none;
+  /* display: none; */
   background-color: #779ECB;
   color: #2A508B;
   font-size: 14pt;
@@ -289,6 +289,32 @@ table {
 .buttons:hover {
   background-color: #2A508B;
   color: #779ECB;
+}
+
+.mine_container {
+  display: none;
+  height: 54px;
+}
+
+.mine_price {
+  position: relative;
+  color: #FE6B64;
+  left: 25px;
+}
+
+.investigate_container {
+  display: none;
+  height: 54px;
+}
+
+.investigate_price {
+  position: relative;
+  color: #FE6B64;
+  left: 45px;
+}
+
+.collect {
+  display: none;
 }
 
 .image_container {

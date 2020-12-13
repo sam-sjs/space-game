@@ -69,8 +69,9 @@ class Planet < ApplicationRecord
     return unless self.fuel_present && !self.fuel_constructed
     fuel_found = rand(2..4)
     system.user.fuel += fuel_found
+    system.user.currency -= 500
     system.user.save
-    self.mine_time = Time.current
+    self.mine_time = Time.now.getutc
     self.fuel_constructed = true
     self.save
     "You have successfully constructed a Mine, check back later to retrieve extracted Helium-3. \n While constructing, your engineers uncovered #{fuel_found} units of Helium-3."
@@ -93,6 +94,8 @@ class Planet < ApplicationRecord
     return unless self.sensors_detected && !self.sensors_investigated
     chance = rand(1..100)
     self.sensors_investigated = true
+    system.user.fuel -= 1
+    system.user.save
     self.save
     case
     when chance >=86 then found_energy_crystal

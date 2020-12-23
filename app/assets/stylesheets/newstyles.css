@@ -2,6 +2,7 @@
 
 * {
   box-sizing: border-box;
+  border: 1px solid red;
 }
 
 html, body {
@@ -85,6 +86,7 @@ hr {
   position:absolute;
   display: block;
   text-align: center;
+  cursor: pointer;
 }
 
 .direction_guides {
@@ -268,7 +270,7 @@ hr {
 
 #system {
   position: absolute;
-  top: 20px;
+  top: 56px;
   left: 40%;
   width: 20%;
   text-align: center;

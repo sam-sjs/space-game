@@ -9,8 +9,8 @@ Vue.component('navigation', {
   }, // methods{}
   //====== !!!!! CHANGE SYS_ID TO BE DYNAMIC !!!!!! =========
   template: `
-    <div @click=navClick(position)>
-      TEST
+    <div @click=navClick(position) class="nav_links" :id="position+'_nav'">
+      <div class="direction_guides" :id="position+'_guide'">{{position}}</div>
     </div>
   `
   // <a v-bind:id="position" class="nav_links" rel="nofollow" data-method="post" href="/systems?prev_loc=sys_below_id&amp;sys_id=898"></a>

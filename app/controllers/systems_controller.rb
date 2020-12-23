@@ -3,6 +3,10 @@ class SystemsController < ApplicationController
   end
 
   def create
+    
+  end
+
+  def old_create
     if @current_user.fuel < 1
       flash[:notice] = "You are out of fuel"
       redirect_to system_path(System.find params[:sys_id]) and return

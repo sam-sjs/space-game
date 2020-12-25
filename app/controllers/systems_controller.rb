@@ -16,7 +16,8 @@ class SystemsController < ApplicationController
     @current_user.save
 
     response = {
-      redirectId: next_sys.id
+      redirectId: next_sys.id,
+      systemName: next_sys.name
     }
 
     render json: response

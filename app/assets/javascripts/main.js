@@ -9,6 +9,7 @@ $(document).ready(function() {
         .done(function(data) {
           // TODO: Figure out if I really still need to know the system in front-end
           console.log('Current System Id: ', data.redirectId);
+          myApp.currentSystem = data.systemName;
         })
         .fail(console.warn);
       } // navClick()
@@ -23,6 +24,9 @@ $(document).ready(function() {
 
     const myApp = new Vue({
       el: '#app',
+      data: {
+        currentSystem: ''
+      }
 
     }); // new Vue()
 

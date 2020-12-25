@@ -2,7 +2,7 @@
 
 * {
   box-sizing: border-box;
-  border: 1px solid red;
+  /* border: 1px solid red; */
 }
 
 html, body {
@@ -96,24 +96,22 @@ hr {
 }
 
 #top_guide {
-  bottom: 260px;
-  left: 50px;
+  bottom: 50px;
 }
 
 #right_guide {
-  left: 200px;
-  top: 112px;
+  top: 61px;
+  left: -11px;
   transform: rotate(90deg);
 }
 
 #bottom_guide {
-  top: 260px;
-  left: 50px;
+  top: 50px;
 }
 
 #left_guide {
-  right: 200px;
-  top: 112px;
+  top: 61px;
+  right: -11px;
   transform: rotate(-90deg);
 }
 

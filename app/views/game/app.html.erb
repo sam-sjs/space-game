@@ -1,10 +1,10 @@
 <div id="app">
   <div id="ship_container">
     <!-- Navigation Links -->
-    <navigation position="top"></navigation>
-    <navigation position="left"></navigation>
-    <navigation position="right"></navigation>
-    <navigation position="bottom"></navigation>
+    <nav-links position="top" previous="sys_below_id"></nav-links>
+    <nav-links position="left" previous="sys_right_id"></nav-links>
+    <nav-links position="right" previous="sys_left_id"></nav-links>
+    <nav-links position="bottom" previous="sys_above_id"></nav-links>
 
     <!-- Central Console Images -->
     <%= image_tag "nav-dial.png", id: "nav_dial" %>

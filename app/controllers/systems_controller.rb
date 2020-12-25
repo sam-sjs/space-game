@@ -3,8 +3,24 @@ class SystemsController < ApplicationController
   end
 
   def create
-    
-  end
+    next_sys = System.check_system(params[:prev_loc], @current_user.last_system)
+    unless next_sys
+      # TODO: make sure there are validity checks where necessary (prev_loc, sys_id, others?)
+      # Think about whether I need to validate prev_loc - sys_id should all be server side now
+      next_sys = System.create user_id: @current_user.id
+      Planet.planet_setup(next_sys.id, next_sys.name)
+    end
+    next_sys.send(params[:prev_loc]+"=", @current_user.last_system)
+    next_sys.save
+    @current_user.last_system = next_sys.id
+    @current_user.save
+
+    response = {
+      redirectId: next_sys.id
+    }
+
+    render json: response
+  end # create
 
   def old_create
     if @current_user.fuel < 1
@@ -30,7 +46,7 @@ class SystemsController < ApplicationController
       arrival.save
       redirect_to system_path(next_sys) and return
     else
-      # Validate that user has moved from a surrounding system and hasn't plugged anything in themselves
+      # Validate that user has moved from a surrounding system and hasn't plugged anything in themselves - really think about whether we need this, you haven't included in new create path
       valid_directions = ["sys_below_id", "sys_above_id", "sys_left_id", "sys_right_id"]
       redirect_to root_path and return unless valid_directions.include? params[:prev_loc] or params[:startup]
 
@@ -49,12 +65,11 @@ class SystemsController < ApplicationController
   end
 
   def show
-    @current_system = System.find params[:id]
+    # Does this still need to be an instance variable? - Probably not but leave for now before you break something
+    @current_system = System.find @current_user.last_system
     # Set time entered for mining function to use
     @current_system.time_entered = Time.current
     @current_system.save
-    @current_user.last_system = @current_system.id
-    @current_user.save
   end
 
   def edit

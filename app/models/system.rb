@@ -18,13 +18,13 @@ class System < ApplicationRecord
   def self.check_system(prev_loc, sys_id)
     system = System.find sys_id
     if prev_loc == "sys_below_id" && system.sys_above_id.present?
-      system.sys_above_id
+      System.find system.sys_above_id
     elsif prev_loc == "sys_above_id" && system.sys_below_id.present?
-      system.sys_below_id
+      System.find system.sys_below_id
     elsif prev_loc == "sys_left_id" && system.sys_right_id.present?
-      system.sys_right_id
+      System.find system.sys_right_id
     elsif prev_loc == "sys_right_id" && system.sys_left_id.present?
-      system.sys_left_id
+      System.find system.sys_left_id
     end
   end
 

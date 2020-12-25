@@ -1,27 +1,30 @@
 $(document).ready(function() {
 
-Vue.component('navigation', {
-  props: ['position'],
-  methods: {
-    navClick: function(position) {
-      console.log('Navigation Clicked! Direction: ', position);
-    } // navClick()
-  }, // methods{}
-  //====== !!!!! CHANGE SYS_ID TO BE DYNAMIC !!!!!! =========
-  template: `
-    <div @click=navClick(position) class="nav_links" :id="position+'_nav'">
-      <div class="direction_guides" :id="position+'_guide'">{{position}}</div>
-    </div>
-  `
-  // <a v-bind:id="position" class="nav_links" rel="nofollow" data-method="post" href="/systems?prev_loc=sys_below_id&amp;sys_id=898"></a>
+  Vue.component('nav-links', {
+    props: ['position', 'previous'],
+    methods: {
+      navClick: function(position, previous) {
+        console.log('Navigation Clicked! Direction: ', position);
+        $.post('/systems', {prev_loc: previous})
+        .done(function(data) {
+          // TODO: Figure out if I really still need to know the system in front-end
+          console.log('Current System Id: ', data.redirectId);
+        })
+        .fail(console.warn);
+      } // navClick()
+    }, // methods{}
+    template: `
+      <div @click="navClick(position, previous)" class="nav_links" :id="position+'_nav'">
+        <div class="direction_guides" :id="position+'_guide'">{{position}}</div>
+      </div>
+    `
+  }); // end nav-links component
 
-}); // end navigation component
 
+    const myApp = new Vue({
+      el: '#app',
 
-  const myApp = new Vue({
-    el: '#app'
-
-  }); // new Vue()
+    }); // new Vue()
 
 }); // document.ready()
 

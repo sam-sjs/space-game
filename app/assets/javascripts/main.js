@@ -2,21 +2,40 @@ $(document).ready(function() {
 
   Vue.component('nav-links', {
     props: ['position', 'previous'],
+    // data: function() {
+    //   return {
+    //     top: 'A',
+    //     bottom: '',
+    //     left: '',
+    //     right: '',
+    //     requestDone: false
+    //   }; // return
+    // }, // data()
+    // Is mounted() firing after every POST from navClick resulting in double requests?
     methods: {
-      navClick: function(position, previous) {
-        console.log('Navigation Clicked! Direction: ', position);
+      navClick: function(previous) {
+        console.log('Navigation Clicked! Direction: ', previous);
         $.post('/systems', {prev_loc: previous})
         .done(function(data) {
-          // TODO: Figure out if I really still need to know the system in front-end
           console.log('Current System Id: ', data.redirectId);
           myApp.currentSystem = data.systemName;
+          myApp.top = data.sysBelow;
+          myApp.bottom = data.sysAbove;
+          myApp.left = data.sysRight;
+          myApp.right = data.sysLeft;
+          myApp.requestDone = true;
+          console.log(myApp);
         })
         .fail(console.warn);
       } // navClick()
+      // surroundingSystem: function(position) {
+      //   const directions = {'top': this.top, 'bottom': this.bottom, 'left': this.left, 'right': this.right};
+      //   return directions[position];
+      // },
     }, // methods{}
     template: `
-      <div @click="navClick(position, previous)" class="nav_links" :id="position+'_nav'">
-        <div class="direction_guides" :id="position+'_guide'">{{position}}</div>
+      <div @click="navClick(previous)" class="nav_links" :id="position+'_nav'">
+        <div class="direction_guides" :id="position+'_guide'">{{top}}</div>
       </div>
     `
   }); // end nav-links component
@@ -24,9 +43,27 @@ $(document).ready(function() {
 
     const myApp = new Vue({
       el: '#app',
+      mounted: function() {
+        $.getJSON('/systems')
+        .done(function(data) {
+          this.currentSystem = data.systemName;
+          this.top = data.sysBelow;
+          this.bottom = data.sysAbove;
+          this.left = data.sysRight;
+          this.right = data.sysLeft;
+          this.requestDone = true;
+          console.log(this);
+        }) // .done()
+        .fail(console.warn);
+      }, // mounted{}
       data: {
-        currentSystem: ''
-      }
+        currentSystem: '',
+        top: '',
+        bottom: '',
+        left: '',
+        right: '',
+        requestDone: false
+      } // data{}
 
     }); // new Vue()
 

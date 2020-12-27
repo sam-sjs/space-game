@@ -16,8 +16,11 @@ class SystemsController < ApplicationController
     @current_user.save
 
     response = {
-      redirectId: next_sys.id,
-      systemName: next_sys.name
+      systemName: next_sys.name,
+      sysBelow: next_sys.sys_below_id.present? ? System.find(next_sys.sys_below_id).name : '???',
+      sysAbove: next_sys.sys_above_id.present? ? System.find(next_sys.sys_above_id).name : '???',
+      sysLeft: next_sys.sys_left_id.present? ? System.find(next_sys.sys_left_id).name : '???',
+      sysRight: next_sys.sys_right_id.present? ? System.find(next_sys.sys_right_id).name : '???'
     }
 
     render json: response
@@ -63,6 +66,17 @@ class SystemsController < ApplicationController
   end
 
   def index
+    @current_system = System.find @current_user.last_system
+
+    response = {
+      systemName: @current_system.name,
+      sysBelow: @current_system.sys_below_id.present? ? System.find(@current_system.sys_below_id).name : '???',
+      sysAbove: @current_system.sys_above_id.present? ? System.find(@current_system.sys_above_id).name : '???',
+      sysLeft: @current_system.sys_left_id.present? ? System.find(@current_system.sys_left_id).name : '???',
+      sysRight: @current_system.sys_right_id.present? ? System.find(@current_system.sys_right_id).name : '???'
+    }
+
+    render json: response
   end
 
   def show

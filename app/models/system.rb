@@ -27,5 +27,4 @@ class System < ApplicationRecord
       System.find system.sys_left_id
     end
   end
-
 end

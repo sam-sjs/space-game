@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  post 'user_token' => 'user_token#create'
+  
   get '/game' => 'game#app'
 
   root to: 'pages#home'

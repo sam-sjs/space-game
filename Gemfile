@@ -58,3 +58,5 @@ gem 'pry-rails'
 gem 'jquery-rails'
 
 gem 'knock'
+
+gem 'rack-cors'

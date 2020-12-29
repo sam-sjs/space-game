@@ -1,4 +1,4 @@
-$(document).ready(function() {
+// $(document).ready(function() {
 
   Vue.component('nav-links', {
     props: ['position', 'previous'],
@@ -43,7 +43,15 @@ $(document).ready(function() {
 
     const myApp = new Vue({
       el: '#app',
-      mounted: function() {
+      data: {
+        currentSystem: '',
+        top: '',
+        bottom: '',
+        left: '',
+        right: '',
+        requestDone: false
+      }, // data{}
+      created: function() {
         $.getJSON('/systems')
         .done(function(data) {
           this.currentSystem = data.systemName;
@@ -56,18 +64,9 @@ $(document).ready(function() {
         }) // .done()
         .fail(console.warn);
       }, // mounted{}
-      data: {
-        currentSystem: '',
-        top: '',
-        bottom: '',
-        left: '',
-        right: '',
-        requestDone: false
-      } // data{}
-
     }); // new Vue()
 
-}); // document.ready()
+// }); // document.ready()
 
 //
 // $(document).ready(function() {

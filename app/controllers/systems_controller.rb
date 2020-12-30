@@ -3,6 +3,14 @@ class SystemsController < ApplicationController
   def new
   end
 
+  def index
+    response = {
+      name: current_user.name
+    }
+
+    render json: response
+  end
+
   def create
     next_sys = System.check_system(params[:prev_loc], @current_user.last_system)
     unless next_sys
@@ -66,7 +74,7 @@ class SystemsController < ApplicationController
     end
   end
 
-  def index
+  def index_new
     @current_system = System.find @current_user.last_system
 
     response = {

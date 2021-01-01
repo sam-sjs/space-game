@@ -3,26 +3,18 @@ class SystemsController < ApplicationController
   def new
   end
 
-  def index
-    response = {
-      name: current_user.name
-    }
-
-    render json: response
-  end
-
   def create
-    next_sys = System.check_system(params[:prev_loc], @current_user.last_system)
+    next_sys = System.check_system(params[:prev_loc], current_user.last_system)
     unless next_sys
       # TODO: make sure there are validity checks where necessary (prev_loc, sys_id, others?)
       # Think about whether I need to validate prev_loc - sys_id should all be server side now
-      next_sys = System.create user_id: @current_user.id
+      next_sys = System.create user_id: current_user.id
       Planet.planet_setup(next_sys.id, next_sys.name)
     end
-    next_sys.send(params[:prev_loc]+"=", @current_user.last_system)
+    next_sys.send(params[:prev_loc]+"=", current_user.last_system)
     next_sys.save
-    @current_user.last_system = next_sys.id
-    @current_user.save
+    current_user.last_system = next_sys.id
+    current_user.save
 
     response = {
       systemName: next_sys.name,
@@ -74,15 +66,15 @@ class SystemsController < ApplicationController
     end
   end
 
-  def index_new
-    @current_system = System.find @current_user.last_system
+  def index
+    current_system = System.find current_user.last_system
 
     response = {
-      systemName: @current_system.name,
-      sysBelow: @current_system.sys_below_id.present? ? System.find(@current_system.sys_below_id).name : '???',
-      sysAbove: @current_system.sys_above_id.present? ? System.find(@current_system.sys_above_id).name : '???',
-      sysLeft: @current_system.sys_left_id.present? ? System.find(@current_system.sys_left_id).name : '???',
-      sysRight: @current_system.sys_right_id.present? ? System.find(@current_system.sys_right_id).name : '???'
+      systemName: current_system.name,
+      sysBelow: current_system.sys_below_id.present? ? System.find(current_system.sys_below_id).name : '???',
+      sysAbove: current_system.sys_above_id.present? ? System.find(current_system.sys_above_id).name : '???',
+      sysLeft: current_system.sys_left_id.present? ? System.find(current_system.sys_left_id).name : '???',
+      sysRight: current_system.sys_right_id.present? ? System.find(current_system.sys_right_id).name : '???'
     }
 
     render json: response
@@ -90,10 +82,10 @@ class SystemsController < ApplicationController
 
   def show
     # Does this still need to be an instance variable? - Probably not but leave for now before you break something
-    @current_system = System.find @current_user.last_system
+    current_system = System.find current_user.last_system
     # Set time entered for mining function to use
-    @current_system.time_entered = Time.current
-    @current_system.save
+    current_system.time_entered = Time.current
+    current_system.save
   end
 
   def edit

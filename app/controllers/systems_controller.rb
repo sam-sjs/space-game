@@ -21,7 +21,51 @@ class SystemsController < ApplicationController
       sysBelow: next_sys.sys_below_id.present? ? System.find(next_sys.sys_below_id).name : '???',
       sysAbove: next_sys.sys_above_id.present? ? System.find(next_sys.sys_above_id).name : '???',
       sysLeft: next_sys.sys_left_id.present? ? System.find(next_sys.sys_left_id).name : '???',
-      sysRight: next_sys.sys_right_id.present? ? System.find(next_sys.sys_right_id).name : '???'
+      sysRight: next_sys.sys_right_id.present? ? System.find(next_sys.sys_right_id).name : '???',
+      planet0: {
+        id: next_sys.planets[0].id,
+        name: next_sys.planets[0].name,
+        img: next_sys.planets[0].image,
+        size: next_sys.planets[0].size,
+        fuelStatus: next_sys.planets[0].fuel_status,
+        sensorStatus: next_sys.planets[0].sensor_status
+      },
+      planet1: if(next_sys.planets[1].present?)
+        {
+          id: next_sys.planets[1].id,
+          name: next_sys.planets[1].name,
+          img: next_sys.planets[1].image,
+          size: next_sys.planets[1].size,
+          fuelStatus: next_sys.planets[1].fuel_status,
+          sensorStatus: next_sys.planets[1].sensor_status
+        }
+      else
+        nil
+      end,
+      planet2: if(next_sys.planets[2].present?)
+        {
+          id: next_sys.planets[2].id,
+          name: next_sys.planets[2].name,
+          img: next_sys.planets[2].image,
+          size: next_sys.planets[2].size,
+          fuelStatus: next_sys.planets[2].fuel_status,
+          sensorStatus: next_sys.planets[2].sensor_status
+        }
+      else
+        nil
+      end,
+      planet3: if(next_sys.planets[3].present?)
+        {
+          id: next_sys.planets[3].id,
+          name: next_sys.planets[3].name,
+          img: next_sys.planets[3].image,
+          size: next_sys.planets[3].size,
+          fuelStatus: next_sys.planets[3].fuel_status,
+          sensorStatus: next_sys.planets[3].sensor_status
+        }
+      else
+        nil
+      end
     }
 
     render json: response
@@ -66,7 +110,7 @@ class SystemsController < ApplicationController
     end
   end
 
-  def index
+  def index  # What on earth was I doing here, needs tiding, is this even needed?
     current_system = System.find current_user.last_system
 
     response = {

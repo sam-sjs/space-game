@@ -110,7 +110,7 @@ class SystemsController < ApplicationController
     end
   end
 
-  def index  # What on earth was I doing here, needs tiding, is this even needed?
+  def index
     current_system = System.find current_user.last_system
 
     response = {
@@ -118,7 +118,51 @@ class SystemsController < ApplicationController
       sysBelow: current_system.sys_below_id.present? ? System.find(current_system.sys_below_id).name : '???',
       sysAbove: current_system.sys_above_id.present? ? System.find(current_system.sys_above_id).name : '???',
       sysLeft: current_system.sys_left_id.present? ? System.find(current_system.sys_left_id).name : '???',
-      sysRight: current_system.sys_right_id.present? ? System.find(current_system.sys_right_id).name : '???'
+      sysRight: current_system.sys_right_id.present? ? System.find(current_system.sys_right_id).name : '???',
+      planet0: {
+        id: current_system.planets[0].id,
+        name: current_system.planets[0].name,
+        img: current_system.planets[0].image,
+        size: current_system.planets[0].size,
+        fuelStatus: current_system.planets[0].fuel_status,
+        sensorStatus: current_system.planets[0].sensor_status
+      },
+      planet1: if(current_system.planets[1].present?)
+        {
+          id: current_system.planets[1].id,
+          name: current_system.planets[1].name,
+          img: current_system.planets[1].image,
+          size: current_system.planets[1].size,
+          fuelStatus: current_system.planets[1].fuel_status,
+          sensorStatus: current_system.planets[1].sensor_status
+        }
+      else
+        nil
+      end,
+      planet2: if(current_system.planets[2].present?)
+        {
+          id: current_system.planets[2].id,
+          name: current_system.planets[2].name,
+          img: current_system.planets[2].image,
+          size: current_system.planets[2].size,
+          fuelStatus: current_system.planets[2].fuel_status,
+          sensorStatus: current_system.planets[2].sensor_status
+        }
+      else
+        nil
+      end,
+      planet3: if(current_system.planets[3].present?)
+        {
+          id: current_system.planets[3].id,
+          name: current_system.planets[3].name,
+          img: current_system.planets[3].image,
+          size: current_system.planets[3].size,
+          fuelStatus: current_system.planets[3].fuel_status,
+          sensorStatus: current_system.planets[3].sensor_status
+        }
+      else
+        nil
+      end
     }
 
     render json: response

@@ -58,7 +58,7 @@ class Planet < ApplicationRecord
     if sensors_detected && sensors_investigated
       'Point of interest investigated'
     elsif sensors_detected
-      'Point of interst found'
+      'Point of interest found'
     else
       'Nothing of note'
     end

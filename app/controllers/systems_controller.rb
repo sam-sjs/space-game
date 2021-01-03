@@ -23,6 +23,16 @@ class SystemsController < ApplicationController
       sysAbove: next_sys.sys_above_id.present? ? System.find(next_sys.sys_above_id).name : '???',
       sysLeft: next_sys.sys_left_id.present? ? System.find(next_sys.sys_left_id).name : '???',
       sysRight: next_sys.sys_right_id.present? ? System.find(next_sys.sys_right_id).name : '???',
+      userResources: {
+        currency: current_user.currency,
+        fuel: current_user.fuel,
+        crystals: {
+          green: current_user.green_crystals,
+          red: current_user.red_crystals,
+          blue: current_user.blue_crystals,
+          purple: current_user.purple_crystals
+        }
+      },
       planet0: {
         id: next_sys.planets[0].id,
         name: next_sys.planets[0].name,
@@ -121,6 +131,16 @@ class SystemsController < ApplicationController
       sysAbove: current_system.sys_above_id.present? ? System.find(current_system.sys_above_id).name : '???',
       sysLeft: current_system.sys_left_id.present? ? System.find(current_system.sys_left_id).name : '???',
       sysRight: current_system.sys_right_id.present? ? System.find(current_system.sys_right_id).name : '???',
+      userResources: {
+        currency: current_user.currency,
+        fuel: current_user.fuel,
+        crystals: {
+          green: current_user.green_crystals,
+          red: current_user.red_crystals,
+          blue: current_user.blue_crystals,
+          purple: current_user.purple_crystals
+        }
+      },
       planet0: {
         id: current_system.planets[0].id,
         name: current_system.planets[0].name,

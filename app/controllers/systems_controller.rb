@@ -12,6 +12,7 @@ class SystemsController < ApplicationController
       Planet.planet_setup(next_sys.id, next_sys.name)
     end
     next_sys.send(params[:prev_loc]+"=", current_user.last_system)
+    next_sys.time_entered = Time.now.getutc
     next_sys.save
     current_user.last_system = next_sys.id
     current_user.save
@@ -112,6 +113,7 @@ class SystemsController < ApplicationController
 
   def index
     current_system = System.find current_user.last_system
+    current_system.time_entered = Time.now.getutc
 
     response = {
       systemName: current_system.name,
@@ -169,7 +171,7 @@ class SystemsController < ApplicationController
   end
 
   def show
-    # Does this still need to be an instance variable? - Probably not but leave for now before you break something
+    # Does this show method still need to exist for API use?
     current_system = System.find current_user.last_system
     # Set time entered for mining function to use
     current_system.time_entered = Time.current

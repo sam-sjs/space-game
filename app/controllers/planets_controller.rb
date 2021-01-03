@@ -17,10 +17,27 @@ class PlanetsController < ApplicationController
   def update
     planet = Planet.find params[:id]
     response = {}
+
     case params[:type]
-    when 'mine' then response = {mineMsg: planet.build_mine, fuelStatus: planet.fuel_status}
-    when 'investigate' then response = {investigateMsg: planet.investigate_poi, sensorStatus: planet.sensor_status}
-    when 'collect' then response = {collectMsg: planet.collect_fuel, fuelStatus: planet.fuel_status}
+    when 'mine' then response = {
+      mineMsg: planet.build_mine,
+      fuelStatus: planet.fuel_status,
+      updateFuel: planet.system.user.fuel,
+      updateCurrency: planet.system.user.currency}
+    when 'investigate' then response = {
+      investigateMsg: planet.investigate_poi,
+      sensorStatus: planet.sensor_status,
+      updateFuel: planet.system.user.fuel,
+      updateCurrency: planet.system.user.currency,
+      updateCrystals: {
+        green: planet.system.user.green_crystals,
+        red: planet.system.user.red_crystals,
+        blue: planet.system.user.blue_crystals,
+        purple: planet.system.user.purple_crystals}}
+    when 'collect' then response = {
+      collectMsg: planet.collect_fuel,
+      fuelStatus: planet.fuel_status,
+      updateFuel: planet.system.user.fuel}
     end
 
     render json: response
